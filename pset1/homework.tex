@@ -1,0 +1,530 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pgfplots}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{}
+\rhead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\pgfplotsset{compat=1.18}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem }
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Problem Set\ \#1}
+\newcommand{\hmwkDueDate}{September 22, 2024}
+\newcommand{\hmwkClass}{Macroeconomics}
+\newcommand{\hmwkClassTime}{Section 102}
+\newcommand{\hmwkClassInstructor}{Prof. Barnichon}
+\newcommand{\hmwkAuthorName}{\textbf{Zachary Brandt}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 10:00pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\pgfplotsset{
+    standard/.style={
+        axis line style = thick,
+        trig format=rad,
+        enlargelimits,
+        axis x line=middle,
+        axis y line=middle,
+        enlarge x limits=0.15,
+        enlarge y limits=0.15,
+        every axis x label/.style={at={(current axis.right of origin)}, anchor=north west},
+        every axis y label/.style={at={(current axis.above origin)},anchor=south east},
+        % grid=both,
+        ticklabel style={font=\large, fill=white}
+    }
+}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Politicians seeking to garner support for lower taxes will sometimes argue that lowering taxes will
+    actually lead to an increase in tax revenue because this will increase output sharply. Clearly, if tax
+    rates were 100\%, little revenue would be raised since few people would work much. So, at sufficiently
+    high tax rates, this argument is valid. But how high do taxes need to be for this to be the case?
+    \\ \\
+    The argument that lowering taxes will raise revenue was famously made by economist Arthur Laffer
+    in a dinner meeting in 1974 with – then – Ford Administration officials Dick Cheney and Donald
+    Rumsfeld. Laffer is said to have illustrated his argument by drawing a curve on his napkin showing
+    how tax revenue rises with the tax rate at low tax rates but eventually falls back down to zero at 100\%
+    tax rates. A graph of tax revenue as a function of tax rates has since been called the Laffer curve.
+    Having a tax rate higher than the tax rate that maximizes revenue (i.e., a tax rate on the downward
+    sloping portion of the curve) is called being on the wrong side of the Laffer curve.
+    \\ \\
+    In this question, you will solve for the “top of the Laffer curve,” i.e., the tax rate that maximizes tax
+    revenue, in a simple model.
+    \\
+
+    \pagebreak
+
+    \part
+
+    Suppose output in the economy is produced with only labor (no capital, no land, etc., for
+    simplicity). Suppose the production function is $Y= AL$, where $Y$ denotes total output in the economy,
+    $A$ denotes productivity, and $L$ denotes total labor in the economy. Suppose firms take wages $w$ as
+    given. Derive the labor demand curve in this economy. Plot the labor demand curve in ($w$, $L$) space
+    (i.e., with $w$ on the y-axis and $L$ on the x-axis). In one or two sentences, comment on why it makes
+    sense that the labor demand curve takes this form in this model.
+    \\
+
+    \solution
+    \\
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[standard, 
+                        xtick={1,2,3,4,5},
+                        ytick={1,2,3,4,5},
+                        xticklabels={},
+                        yticklabels={,,$A$,,},
+                        xlabel={Labor $L$},
+                        ylabel={Wage $w$},
+                        samples=1000,
+                        xmin=0,
+                        xmax=5,
+                        ymin=0,
+                        ymax=5,
+                        % extra y ticks={3},         
+                        % extra y tick style={fill=white, font=\large}
+                        ]
+                % \node[anchor=center,label=south west:$O$] at (axis cs:0,0){};                
+                \addplot[line width=0.8mm,red,domain={0:5.5}]{3};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    
+    In a competitive market, firms hire until the marginal product of labor is equal to the wage $w$. This behavior determines the labor demand curve. 
+    The derivative of the production function quantifies the marginal product of labor: the marginal change in output with respect to a change in labor.
+     
+
+    \[
+        w = \frac{\partial Y}{\partial L} = \frac{\partial (AL)}{\partial L} =  A        
+    \]
+
+    This shows that the wage is equal to the productivity of labor $A$, which is constant in this economy.
+    The labor demand curve therefore does not depend on $L$, meaning there are no diminishing returns to labor. 
+    This explains why the labor demand curve takes on this horizontal form in this model.
+
+    \pagebreak
+
+    \part
+    
+    Suppose each household’s utility function is
+
+    \[
+        U = \log(C) - \psi \frac{H^{1+\frac{1}{\eta}}}{1+\eta^{-1}},
+    \]
+
+    where $C$ denotes per capita consumption, $H$ denotes per capita hours, and $\eta$ and $\psi$ are parameters.
+    Suppose that all households are identical. This implies that they will all consume the same amount in equilibrium and 
+    supply the same numbers of hours of labor. Each household's budget constraint is
+
+    \[
+        C = (1-\tau_{l})wH + T,
+    \]
+
+    where $\tau_{l}$ denotes the labor income tax in this economy and $T$ denotes a lump sum transfer from the
+    government to the household. For simplicity, we assume that the government redistributes all tax
+    receipts back to the households lump sum. ``Lump sum" means that the household takes the amount
+    of transfers it receives as given—i.e., it believes that it can't affect these with its actions. Derive the
+    household's labor supply curve. 
+    \\ \\ 
+    \solution
+
+    The household maximizes utility subject to the budget constraint. Since the household's consumption is a function of hours,
+    we can eliminate $C$ from the utility function by substitution. 
+    
+    \[
+        U(C) - V(H) = \log((1-\tau_{l})wH + T) - \psi \frac{H^{1+\frac{1}{\eta}}}{1+\eta^{-1}}
+    \]
+
+    Now we can maximize the utility function with respect to one variable $H$. To do this, we differentiate the utility function
+    with respect to $H$ and solve for when the result equals zero. This way we can find an equation that implicitly desribes 
+    how much labor $H$ the household will supply as a function of the wage $w$, assuming all other variables are constant.
+
+    \[
+        \begin{split}
+            \frac{\partial U}{\partial H} &= \frac{(1-\tau_{l})w}{(1-\tau_{l})wH + T} - \psi H^{\frac{1}{\eta}} 
+            \\
+            \text{Set equal to zero} \;\;\; 0 &= \frac{(1-\tau_{l})w}{(1-\tau_{l})wH + T} - \psi H^{\frac{1}{\eta}} 
+            \\
+            \psi H^{\frac{1}{\eta}} &= \frac{(1-\tau_{l})w}{(1-\tau_{l})wH + T}
+            \\
+            \psi H^{\frac{1}{\eta}} &= \frac{(1-\tau_{l})}{(1-\tau_{l})wH + T} \cdot w
+        \end{split}
+    \]
+    \\
+    The equation above describes what is true for households optimally trading off the utility of consumption, 
+    and the disulity of work. On the left hand side is the marginal disutility of work in utils per hour, $V'(H)$. 
+    On the right hand side is the marginal value of extra consumption afforded by working an extra hour. 
+    This is equal to the wage $w$ times the marginal value of consumption, $U'(C)$, resulting
+    in utils per hour worked again. 
+    \\
+
+    The equation therefore shows that for households to optimize they must set the marginal benefit of working an
+    extra hour to its marginal cost. This is the labor supply curve. It describes how much labor in hours worked
+    $H$ a household will supply as a function of the wage $w$.
+
+    \pagebreak
+
+    \part
+
+    Suppose that there are $N$ households in the economy. Total tax revenue will then be 
+    $\tau_{l}wHN$, i.e., the tax rate times household labor income ($wH$) times the number of households.
+    Suppose that each household recieves an equal share of this tax revenue as a lump sum transfer from
+    the government. Use this fact, the household's budget constraint, its labor supply curve, and the labor
+    demand equation to show that hours worked per person in this economy can be expressed as
+
+    \[
+        H = (1-\tau_{l})^{\frac{\eta}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}}.
+    \]
+
+    Plot this curve in ($\tau_{l}$, $H$) space for $\eta = 1$ and $\psi = 2$. In one or two 
+    sentences, describe the intuition for the shape of this curve. 
+    \\ \\
+
+    \solution
+
+    We can express the lump sum transfers $T$ from the government to the households with the total 
+    tax revenue. If each household recieves an equal share of the tax revenue, then the lump sum transfer
+    is simply this total tax revenue divided by the number of households.
+
+    \[
+        T = \frac{\tau_{l}wHN}{N} = \tau_{l}wH
+    \]
+    
+    We can substitute this expression for $T$ into the labor supply curve equation from part (b) to find
+    the hours worked per person in this economy as a function of the tax rate $\tau_l$ and parameters 
+    $\eta$ and $\psi$.
+    \\
+
+    \begin{minipage}{0.5\textwidth}
+        \[
+            \begin{split}
+                \psi H^{\frac{1}{\eta}} &= \frac{(1-\tau_{l})w}{(1-\tau_{l})wH + \tau_{l}wH}
+                \\
+                &= \frac{(1-\tau_l)}{(1-\tau_l)H+\tau_lH}
+                \\
+                &= \frac{1}{H} \cdot \frac{1-\tau_l}{(1+\tau_l)+\tau_l}
+                \\
+                &= \frac{1}{H} \cdot \frac{1-\tau_l}{1}
+                \\
+                H \cdot \psi H^{\frac{1}{\eta}} &= 1-\tau_l
+                \\
+                H^{\frac{\eta}{\eta}} \cdot \psi H^{\frac{1}{\eta}} &= 
+                \\
+                \psi H^{\frac{\eta+1}{\eta}} &= 
+                \\
+                \psi^{\frac{\eta}{\eta+1}} H &= (1-\tau_l)^{\frac{\eta}{\eta + 1}}
+                \\
+                H &= (1-\tau_{l})^{\frac{\eta}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}}
+            \end{split}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[standard, 
+                        ytick=\empty,
+                        xtick={1},
+                        xticklabels={1},
+                        yticklabels={},
+                        xlabel={Tax $\tau_l$},
+                        ylabel={Hours $H$},
+                        samples=10000, 
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1]
+                \node[anchor=center,label=south east:{\large 0}] at (axis cs:0,0){};                
+                \addplot[line width=0.8mm,red,domain={0:5}]{(1-x)^(0.5) * 2^(-0.5)};
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \\ \\ \\ 
+    The curve is downward sloping because as the tax rate increases from 0 to 1, the amount of hours worked per person decreases. 
+    The intuition is that as the tax rate increases, the wage that households receive decreases for each hour worked, 
+    which incentivizes them to work less.
+
+    \pagebreak
+
+    \part
+
+    Recall that tax revenue is $\tau_{l}wHN$. The Laffer curve is a tax revenue as a function of the
+    tax rate and only exogenous variables and parameters. Use the expression you derived in part (c) as
+    well as the labor demand curve to derive an expression for tax revenue that is a function of only the
+    tax rate $\tau_{l}$ and the exogenous variables ($A$, $N$) and parameters ($\eta$, $\psi$). 
+    Plot this function assuming that $\eta=1$, $\psi=2$, $A=1$, and $N=1$. 
+    \\
+
+    \solution
+
+    Using our expression for hours worked per person from part (c) and the labor demand curve in part (a),
+    we can substitute these into $\tau_{l}wHN$ to find an expression for tax revenue as a function of $\tau_l$
+    and the exogenous variables and parameters.
+
+    \[
+        \begin{split}
+            \tau_{l}wHN &= \tau_{l}w (1-\tau_{l})^{\frac{\eta}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}} N \;\;\; \text{substitute from part (c)}
+            \\
+            &= \tau_{l}A (1-\tau_{l})^{\frac{\eta}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}} N
+        \end{split}
+    \]
+    
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[standard,
+                        ytick=\empty, 
+                        xtick={1},
+                        xticklabels={1},
+                        yticklabels={},
+                        xlabel={Tax rate $\tau_l$},
+                        ylabel={Tax revenue},
+                        samples=10000, 
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1]
+                \node[anchor=center,label=south east:{\large 0}] at (axis cs:0,0){};                
+                \addplot[line width=0.8mm,red,domain={0:5}]{x * (1-x)^(0.5) * 2^(-0.5)};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    
+    This plot demonstrates features of a Laffer curve described in the problem description.
+    From the plot, we can see that tax revenue is minimized at a tax rate of 0 and 1, and that tax revenues 
+    rise going up from 0, reach a maximum, and then fall back down again as part of being on the wrong side 
+    of the Laffer curve. 
+
+    \pagebreak
+
+    \part
+
+    Find the top of the Laffer curve. In other words, derive an expression for the tax rate
+    that yields maximum tax revenue as a function of the exogenous parameters ($\eta$, $\psi$).
+    \\
+
+    \solution 
+
+    To find the tax rate that maximizes tax revenue, we can take the derivative of the tax revenue function with respect to the tax rate $\tau_l$ and set it equal to zero.
+
+    \[
+        \begin{split}
+            \frac{\partial (\text{Tax revenue})}{\partial \tau_l} &= \frac{\partial (\tau_{l}A(1-\tau_{l})^{\frac{\eta}{\eta + 1}}\psi^{\frac{-\eta}{\eta + 1}}N )}{\partial \tau_l}
+            \\
+            &= A (1-\tau_{l})^{\frac{\eta}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}} N - A \tau_l \frac{\eta}{\eta+1} (1-\tau_{l})^{\frac{-1}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}} N
+            \\
+            \text{Set equal to zero} \;\;\;\;\;\; 0 &= A (1-\tau_{l})^{\frac{\eta}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}} N - A \tau_l \frac{\eta}{\eta+1} (1-\tau_{l})^{\frac{-1}{\eta+1}} \psi^{\frac{-\eta}{\eta + 1}} N
+            \\
+            &= (1-\tau_{l})^{\frac{\eta}{\eta+1}} - \tau_l \frac{\eta}{\eta+1} (1-\tau_{l})^{\frac{-1}{\eta+1}}
+            \\
+            \tau_l \frac{\eta}{\eta+1} (1-\tau_{l})^{\frac{-1}{\eta+1}} &= (1-\tau_{l})^{\frac{\eta}{\eta+1}}
+            \\
+            \tau_l \frac{\eta}{\eta+1} &= (1-\tau_{l})
+            \\
+            \eta \tau_l &= (1-\tau_{l})(\eta+1)
+            \\
+            \eta \tau_l &= \eta + 1 - \eta \tau_l - \tau_l
+            \\
+            2\eta \tau_l + \tau_l &= \eta + 1
+            \\
+            \tau_l &= \frac{\eta + 1}{2\eta + 1}
+        \end{split}
+    \]
+
+    The tax rate that maximizes tax revenue is $\frac{\eta + 1}{2\eta + 1}$, and solves for the top of the Laffer curve.
+    It is only a function of the parameter $\eta$. Using our specification from part (d), the tax rate that maximizes 
+    tax revenue is $\frac{1 + 1}{2(1) + 1} = \frac{2}{3}$. Taking a look at our plot of tax revenue where 
+    $\eta = 1$, $\psi = 2$, $A = 1$, and $N = 1$, we can see that this is the case.
+    \\ \\
+    
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[standard,
+                        ytick=\empty, 
+                        xtick={1},
+                        xticklabels={1},
+                        yticklabels={},
+                        xlabel={Tax rate $\tau_l$},
+                        ylabel={Tax revenue},
+                        samples=10000, 
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1]
+                \node[anchor=center,label=south east:{\large 0}] at (axis cs:0,0){};
+                \node[anchor=center,label=south:{\small $0.\overline{666}$ }] at (axis cs:2/3,0){};
+                % Vertical asymptote at x = 2/3
+                \addplot[dashed, gray, domain=0:1] coordinates {(2/3,0) (2/3,1)};
+            
+                % Horizontal asymptote at y = 0.272
+                \addplot[dashed, gray, domain=0:1] {0.28};
+                
+                \addplot[line width=0.8mm,red,domain={0:5}]{x * (1-x)^(0.5) * 2^(-0.5)};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+
+    \pagebreak
+
+    \part
+
+    There is a lively debate among economists about what an appropriate value for the
+    parameter $\eta$ is. This parameter is called the Frisch elasticity of labor supply. It is the percentage
+    change in hours worked when wages change by 1\% but holding fixed consumption. Based on data
+    for middle aged males, many labor economists believe that $\eta$ is quite small, e.g., $\eta \approx 0.5$.
+    Macroeconomists, however, often point to changes in participation decisions as evidence for high
+    labor supply elasticities, e.g., early retirement, unemployment, etc. Macroeconomists therefore
+    sometimes use values for $\eta$ that are quite above 1, e.g., $\eta \approx 3$. Calculate the tax rate that yields
+    maximal tax revenue (i.e., the top of the Laffer curve) for the following three values of $\eta$: 0.5, 1, 3.
+    \\
+
+    \solution 
+
+    We can use the formula we derived in part (e) to calculate the tax rate that maximizes tax revenue for the three values of $\eta$.
+
+    \[
+        \begin{split}
+            \eta = 0.5: \;\;\;\;\;\; \tau_l &= \frac{0.5 + 1}{2(0.5) + 1} = \frac{1.5}{2} = 0.75
+            \\
+            \eta = 1: \;\;\;\;\;\; \tau_l &= \frac{1 + 1}{2(1) + 1} = \frac{2}{3} = 0.\overline{666}
+            \\
+            \eta = 3: \;\;\;\;\;\; \tau_l &= \frac{3 + 1}{2(3) + 1} = \frac{4}{7} \approx 0.571
+        \end{split}
+    \]
+
+    From these three examples, higher values of $\eta$ lead to lower tax rates that maximize tax revenue. 
+    This could be because higher values of $\eta$ imply that households are more sensitive to changes in wages, 
+    and therefore will respond with working less as the tax rate increases.
+
+\end{homeworkProblem}
+
+\pagebreak
+
+
+\end{document}
