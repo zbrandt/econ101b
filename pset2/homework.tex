@@ -1,0 +1,385 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pgfplots}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{}
+\rhead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\pgfplotsset{compat=1.18}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem }
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Problem Set\ \#2}
+\newcommand{\hmwkDueDate}{October 7, 2024}
+\newcommand{\hmwkClass}{Macroeconomics}
+\newcommand{\hmwkClassTime}{Section 102}
+\newcommand{\hmwkClassInstructor}{Prof. Barnichon}
+\newcommand{\hmwkAuthorName}{\textbf{Zachary Brandt}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 2:00pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\pgfplotsset{
+    standard/.style={
+        axis line style = thick,
+        trig format=rad,
+        enlargelimits,
+        axis x line=middle,
+        axis y line=middle,
+        enlarge x limits=0.15,
+        enlarge y limits=0.15,
+        every axis x label/.style={at={(current axis.right of origin)}, anchor=north west},
+        every axis y label/.style={at={(current axis.above origin)},anchor=south east},
+        % grid=both,
+        ticklabel style={font=\large, fill=white}
+    }
+}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Fiscal Stimulus in a Neoclassical Model. The econonomic model that we have been developing up
+    until now in the course has been ``Neoclassical'' in the sense that all markets have been assumed
+    to be competitive and we have abstracted from all ``market failures.'' In this question, we explore
+    the implications of fiscal stimuls - i.e., increases in government purchases - on output and
+    consumption in this Neoclassical model. Later in the class, we will study fiscal stimulus in a 
+    Keynesian model.
+    \\ \\
+    Consider a Robinson Crusoe economy (i.e., an economy populated by a large number of identical
+    households). In such an economy, all households will do the same thing since everyone is identical.
+    We can therefore represent the whole household side of the economy by on e``representative 
+    consumer,'' which we refere to as Robinson Crusoe.
+    \\ \\
+    One somewhat tricky aspect of writing the model this way is that we will be using the same
+    symbols to represent both individual variables and teh corresponding aggregate variables. For
+    example, we will use the symbol $C$ to represent individual consumption but also to represent
+    aggregate consumption. The same will be true for hours worked $H$, government spending $G$, and
+    taxes $T$. It is important to keep in mind when solving the problem that from the individual's point
+    of view certain variables are exogenous - i.e., taken as given. For example, each household doesn't
+    take into account how a change in consumption and hours worked will affect taxes and government
+    spending because from its perspective any change in its behavior has a trivial effect on the
+    aggregate and thus a trivial effect on taxes and government spending. 
+    \\ \\
+    Supose Robinson Crusoe's preferences can be represented by the following utility function:
+
+    \[
+        \log(C) + \psi log(1-H) + \theta log(G)
+    \]
+    
+    Here $C$ denotes consumption and $H$ denotes hours worked as in the models we have seen earlier
+    in the class. The new element is $G$, which represents government purchases. We entertain the
+    possibility that Robinson Crusoe may value the things that the government purchases. This is why
+    $G$ shows up in Robinson Crusoe's utility function. The degree to which Robinson Crusoe values
+    government purchases is governed by the parameter $\theta$. Suppose Robinson Crusoe's budget
+    constraint is $C=wH-T$, where $w$ denotes the wage rate and $T$ denotes the lump sum taxes paid by
+    Robinson Crusoe. Assume for simplicity that the government runs a balanced budget, i.e., that $G =
+    T$. Notice, also, that the resource constraint in this economy implies that $Y=C+G$, i.e.,
+    consumption plus government purchases cannot exceed the amount of output produced $Y$. In this
+    model, we will treat $C$, $H$, and $Y$ as endogenous variables. All other variables - including $G$ and $T$
+    - are considered exogenous.
+    \\
+
+    \pagebreak
+
+    \part
+
+    Derive Robinson Crusoe's labor supply curve. (Hint: Since $G$ is exogenous,
+    Robinson Crusoe treats it as a constant.)
+    \\
+
+    \solution
+    \\
+    Robinson Crusoe will attempt to maximize his utility function subject to his budget constraint.
+    To do so he will balance the marginal utility of consumption with the marginal disutility of work.
+    First, we can substitute the budget constraint into the utility function to eliminate $C$: 
+    
+    \[
+        U = \log(wH-T) + \psi \log(1-H) + \theta \log(G)
+    \]
+    
+    Now we can see both the utility of consumption and of leisure are functions of hours worked $H$
+    (utility from government purchases is exogenous and invariable with respect to $H$ from the individual's
+    perspective).
+    We can now differentiate with respect to $H$ and set the result equal to zero to find the optimal
+    amount of hours worked $H$ that maximizes Robinson Crusoe's utility. This will define the labor
+    supply curve for this economy. 
+
+    \[
+        \begin{split}
+            \frac{\partial U}{\partial H} &= \frac{w}{wH-T} - \psi \frac{1}{1-H}
+            \\
+            0 &= \frac{w}{wH-T} - \psi \frac{1}{1-H} 
+            \\
+            \psi \frac{1}{1-H} &= w \frac{1}{wH-T}
+        \end{split}
+    \]
+
+    The above equation solves for hours worked at each wage rate $w$ by balancing the marginal 
+    disutility of an extra hour work on the left hand side, and the marginal value of consumption 
+    from an extra hour worked on the right. 
+
+
+    \pagebreak
+
+    \part
+    
+    Suppose the production function in the economy is $Y=AL$ and the wage is thus
+    given by $w = A$ as in Problem Set 1. Use this equation, Robinson Crusoe's labor supply curve, the
+    economy's resource constraint and/or the balanced budget equation to solve for output in terms of
+    only $G$, $A$, and $\phi$. (Hint: Recall that $N=1$.)
+    \\ \\ 
+    \solution
+
+    We can substitute the wage rate $w = A$ into the labor supply curve we derived in part (a) to find
+    the hours worked per person in the economy. We can then substitute this expression for hours worked
+    into the resource constraint $Y = C + G$ to find output in terms of only $G$, $A$, and $\phi$.
+
+    \begin{minipage}{0.5\textwidth}
+        \[
+            \begin{split}
+                \psi \frac{1}{1-H} &= w \frac{1}{wH-T}
+                \\
+                \psi \frac{1}{1-H} &= A \frac{1}{AH-T}
+                \\
+                \psi (AH-T) &= A (1-H)
+                \\
+                \psi AH - \psi T &= A - AH
+                \\
+                \psi AH + AH &= A + \psi T
+                \\
+                H (\psi A + A) &= A+\psi T
+                \\
+                H &= \frac{A+\psi T}{\psi A + A}
+            \end{split}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \[
+            \begin{split}
+                Y &= C + g
+                \\
+                Y &= wH - T + G
+                \\
+                Y &= AH - G + G
+                \\
+                Y &= AH
+                \\
+                Y &= A \frac{A+\psi T}{\psi A + A}
+                \\
+                Y &= A \frac{A + \psi G}{A \psi + A}
+                \\
+                Y &= \frac{A + \psi G}{\psi + 1}
+            \end{split}
+        \]
+    \end{minipage}
+
+    \pagebreak
+
+    \part
+
+    The government purchases multiplier is defined as the number of dollars that output 
+    rises by when government purchases rise by one dollar. (You can assume for simplicity that all the 
+    endogenous variables are denoted in dollars.) What is the government pruchases multipler in this
+    economy? If $\psi > 0$, what is the range of values that the government purchases multiplier can take?
+    \\ \\
+
+    \solution
+
+    The government purchases multiplier is the derivative of output with respect to government purchases.
+    We can take the derivative of the output function we derived in part (b) with respect to $G$ to find the
+    government purchases multiplier.
+
+    \[
+        \begin{split}
+            \frac{\partial Y}{\partial G} &= \frac{\partial}{\partial G} \left( \frac{A + \psi G}{\psi + 1} \right)
+            \\
+            &= \frac{\psi}{\psi + 1}
+        \end{split}
+    \]
+
+    The government purchases multiplier is $\frac{\psi}{\psi + 1}$. If $\psi > 0$, the government purchases
+    multiplier can take on any value in the range $(0, 1)$.
+
+    \pagebreak
+
+    \part
+
+    Solve for consumption in terms of on only $G$, $A$, and $\psi$. Briefly comment on how an
+    increase in government purchases affects consumption. 
+    \\
+
+    \solution
+
+    We can substitute the hours worked expression we derived in part (b) into the budget constraint $C = wH - T$
+    to find consumption in terms of only $G$, $A$, and $\psi$.
+
+    \[
+        \begin{split}
+            C &= wH - T
+            \\
+            C &= A \frac{A + \psi T}{\psi A + A} - G
+            \\
+            C &= \frac{A + \psi G}{\psi + 1} - G
+            \\
+            C &= \frac{A + \psi G}{\psi + 1} - \frac{G(\psi + 1)}{\psi + 1}
+            \\
+            C &= \frac{A + \psi G - G(\psi + 1)}{\psi + 1}
+            \\
+            C &= \frac{A + \psi G - G\psi - G}{\psi + 1}
+            \\
+            C &= \frac{A - G}{\psi + 1}
+        \end{split}
+    \]
+    
+    From this substitution we can see that an increase in government purchases will result in a decrease in
+    consumption, all else held equal. 
+
+    \pagebreak
+
+    \part
+
+    In one paragraph, discuss whether an increase in government purchases makes 
+    Robinson Crusoe better or worse off. In particular, commment on whether Robinson Crusoe is made
+    better off in the case where he does not value the things the government purchases, i.e., if $\theta = 0$.
+    \\
+
+    \solution 
+
+    An increase in government purchases makes Robinson Crusoe worse off. This is because the government
+    purchases multiplier is less than one, meaning that an increase in government purchases will result in
+    a less than one-for-one increase in output. An increase in government purchases reduces
+    Robinson Crusoe's consumption and therefore utility. If Robinson Crusoe does not value the things the 
+    government purchases, then the decrease in consumption will be even more pronounced, because the utility 
+    from government purchases will be nil. 
+
+    \pagebreak
+
+\end{homeworkProblem}
+
+\pagebreak
+
+
+\end{document}
