@@ -368,13 +368,45 @@
 
     \solution 
 
-    An increase in government purchases makes Robinson Crusoe worse off. This is because the government
-    purchases multiplier is less than one, meaning that an increase in government purchases will result in
-    a less than one-for-one increase in output. An increase in government purchases reduces
-    Robinson Crusoe's consumption and therefore utility. If Robinson Crusoe does not value the things the 
-    government purchases, then the decrease in consumption will be even more pronounced, because the utility 
-    from government purchases will be nil. 
+    % maths explanation with offset from hours worked (function of T, G)
 
+    To determine whether an increase in government purchases makes Robinson Crusoe better or worse off, we can
+    substitute the consumption function from part (d) and the expression for hours worked from part (b) into
+    Robinson Crusoe's utility function. We can then differentiate the utility function with respect to $G$ to
+    determine the effect of an increase in government purchases on Robinson Crusoe's utility.
+
+    \[
+        \begin{split}
+            U &= \log(C) + \psi \log(1-H) + \theta \log(G)
+            \\
+            U &= \log \left( \frac{A - G}{\psi + 1} \right) + \psi \log \left( 1 - \frac{A + \psi G}{\psi A + A} \right) \;\;\; \text{if} \; \theta = 0
+            \\
+            \frac{\partial U}{\partial G} &= \frac{1}{\frac{A - G}{\psi + 1}} \left( -\frac{1}{\psi + 1} \right) + \frac{\psi}{1 - \frac{A + \psi G}{\psi A + A}} \left( -\frac{\psi}{\psi A + A} \right)
+            \\
+            &= -\frac{1}{A - G} + \frac{\psi}{\frac{\psi A + A}{\psi A + A} - \frac{A + \psi G}{\psi A + A}} \left( -\frac{\psi}{\psi A + A} \right)
+            \\
+            &= -\frac{1}{A - G} + \frac{\psi}{\frac{\psi A - \psi G}{\psi A + A}} \left( -\frac{\psi}{\psi A + A} \right)
+            \\
+            &= -\frac{1}{A - G} + \frac{1}{\frac{A - G}{\psi A + A}} \left( -\frac{\psi}{\psi A + A} \right)
+            \\
+            &= -\frac{1}{A - G} + \frac{\psi A + A}{A - G} \left( -\frac{\psi}{\psi A + A} \right)
+            \\
+            &= -\frac{1}{A - G} - \frac{\psi}{A - G}
+            \\
+            &= -\frac{1 + \psi}{A - G}
+        \end{split}  
+    \]
+    \\
+    From the above expression we can see that an increase in government purchases will make Robinson Crusoe worse off
+    if $\theta = 0$ and $\psi > -1$. So if $\psi > 0$ like before, the marginal utility of government purchases is negative. 
+    Even before differentiation it's clear to see that $U$ will decrease when $G$ increases. For the log of consumption,
+    any increase in $G$ will decrease the log expression overall, meaning decreased utility. For the log of 1 minus hours
+    worked, any increase in $G$ will increase the term that is substract from 1, again decreasing the log expression overall
+    and decreasing utility.
+    \\ \\
+    All together, the decrease in consumption from increased government purchases, and the ensuing decrease in utility, is not offset 
+    by a decrease in hours worked in the case where Robinson Crusoe values nothing the government purchased.
+    
     \pagebreak
 
 \end{homeworkProblem}
