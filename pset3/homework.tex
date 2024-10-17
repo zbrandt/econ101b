@@ -87,7 +87,7 @@
 \newcommand{\hmwkDueDate}{October 20, 2024}
 \newcommand{\hmwkDueTime}{10:00pm}
 \newcommand{\hmwkClass}{Macroeconomics}
-\newcommand{\hmwkClassTime}{Section 101}
+\newcommand{\hmwkClassTime}{Section 104}
 \newcommand{\hmwkClassInstructor}{Prof. Barnichon}
 \newcommand{\hmwkAuthorName}{\textbf{Zachary Brandt}}
 
@@ -169,34 +169,34 @@
     \\ \\
     \solution
     \\ \\
-    \begin{tikzpicture}
-        \begin{axis}[standard,
-                ytick=\empty,
-                xtick=\empty,
-                xticklabels={},
-                yticklabels={},
-                xlabel={Capital $K$},
-                ylabel={Investment $I$},
-                samples=1000, 
-                xmin=0,
-                xmax=3,
-                ymin=0,
-                ymax=
-                3]
-            \addplot[line width=0.8mm,cyan,domain={0:2.5}]{x};
-            \addplot[line width=0.8mm,color=brown,domain={0:2.5}]{1.2*(x-0.025)^(1/3)};
-            \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
-            \node[anchor=center,label=south:{\textbf{$K^*$}}] at (axis cs:1.31453,0){};
-            \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
-            \node[anchor=center,label=south:{\textbf{$K_0$}}] at (axis cs:0.75,0){};
-            \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
+    % \begin{tikzpicture}
+    %     \begin{axis}[standard,
+    %             ytick=\empty,
+    %             xtick=\empty,
+    %             xticklabels={},
+    %             yticklabels={},
+    %             xlabel={Capital $K$},
+    %             ylabel={Investment $I$},
+    %             samples=1000, 
+    %             xmin=0,
+    %             xmax=3,
+    %             ymin=0,
+    %             ymax=
+    %             3]
+    %         \addplot[line width=0.8mm,cyan,domain={0:2.5}]{x};
+    %         \addplot[line width=0.8mm,color=brown,domain={0:2.5}]{1.2*(x-0.025)^(1/3)};
+    %         \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
+    %         \node[anchor=center,label=south:{\textbf{$K^*$}}] at (axis cs:1.31453,0){};
+    %         \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
+    %         \node[anchor=center,label=south:{\textbf{$K_0$}}] at (axis cs:0.75,0){};
+    %         \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
             
-            \addplot[mark=* , color=black] coordinates {(1.31453, 1.31453)}; 
+    %         \addplot[mark=* , color=black] coordinates {(1.31453, 1.31453)}; 
             
-            \node[anchor=south east, color=black] at (axis cs:2.25, 2.25) {\small $dK_t$};
-            \node[anchor=north west, color=black] at (axis cs:2.1, 1.5) {\small $\Bar{s}Y_t$};
-        \end{axis}
-    \end{tikzpicture}
+    %         \node[anchor=south east, color=black] at (axis cs:2.25, 2.25) {\small $dK_t$};
+    %         \node[anchor=north west, color=black] at (axis cs:2.1, 1.5) {\small $\Bar{s}Y_t$};
+    %     \end{axis}
+    % \end{tikzpicture}
 
     It will reach the equilibrium point after enough time periods where investment spending balances out capital depreciation. Or maybe actually golden rule level of capital
 
@@ -237,26 +237,26 @@
         \end{split}
     \]
 
-    \begin{tikzpicture}
-        \begin{axis}[standard,
-                ytick=\empty,
-                xtick=\empty,
-                xticklabels={},
-                yticklabels={},
-                xlabel={Time $t$},
-                ylabel={Capital $K$},
-                samples=1000, 
-                xmin=0,
-                xmax=22,
-                ymin=0,
-                ymax=6]
-            \addplot[line width=0.8mm,red,domain={0:4.104}]{5.243};
-            \addplot[line width=0.8mm,red,domain={4.104:22}]{4.243+(1-4.243)*exp(-0.3*(x-5))+1};
-            \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,5.3)};
-            \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,5.243){};
-            \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
-        \end{axis}
-    \end{tikzpicture}
+    % \begin{tikzpicture}
+    %     \begin{axis}[standard,
+    %             ytick=\empty,
+    %             xtick=\empty,
+    %             xticklabels={},
+    %             yticklabels={},
+    %             xlabel={Time $t$},
+    %             ylabel={Capital $K$},
+    %             samples=1000, 
+    %             xmin=0,
+    %             xmax=22,
+    %             ymin=0,
+    %             ymax=6]
+    %         \addplot[line width=0.8mm,red,domain={0:4.104}]{5.243};
+    %         \addplot[line width=0.8mm,red,domain={4.104:22}]{4.243+(1-4.243)*exp(-0.3*(x-5))+1};
+    %         \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,5.3)};
+    %         \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,5.243){};
+    %         \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
+    %     \end{axis}
+    % \end{tikzpicture}
 
     \pagebreak
     \part
@@ -298,47 +298,47 @@
     \]
 
 
-    \begin{tikzpicture}
-        \begin{axis}[standard,
-                ytick=\empty,
-                xtick=\empty,
-                xticklabels={},
-                yticklabels={},
-                xlabel={Time $t$},
-                ylabel={Wage Rate $w$},
-                samples=1000, 
-                xmin=0,
-                xmax=22,
-                ymin=0,
-                ymax=3]
-            \addplot[line width=0.8mm,red,domain={0:4.104}]{2.414};
-            \addplot[line width=0.8mm,red,domain={2.104:22}]{(1/1.145)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(1/3)+1};
-            \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,2.44)};
-            \node[anchor=center,label=west:{$\overline{w}$}] at (axis cs:0,2.414){};
-            \node[anchor=center,label=west:{$w_0$}] at (axis cs:0.4,1.1){};
-        \end{axis}
-    \end{tikzpicture}
+    % \begin{tikzpicture}
+    %     \begin{axis}[standard,
+    %             ytick=\empty,
+    %             xtick=\empty,
+    %             xticklabels={},
+    %             yticklabels={},
+    %             xlabel={Time $t$},
+    %             ylabel={Wage Rate $w$},
+    %             samples=1000, 
+    %             xmin=0,
+    %             xmax=22,
+    %             ymin=0,
+    %             ymax=3]
+    %         \addplot[line width=0.8mm,red,domain={0:4.104}]{2.414};
+    %         \addplot[line width=0.8mm,red,domain={2.104:22}]{(1/1.145)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(1/3)+1};
+    %         \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,2.44)};
+    %         \node[anchor=center,label=west:{$\overline{w}$}] at (axis cs:0,2.414){};
+    %         \node[anchor=center,label=west:{$w_0$}] at (axis cs:0.4,1.1){};
+    %     \end{axis}
+    % \end{tikzpicture}
 
-    \begin{tikzpicture}
-        \begin{axis}[standard,
-                ytick=\empty,
-                xtick=\empty,
-                xticklabels={},
-                yticklabels={},
-                xlabel={Time $t$},
-                ylabel={Wage Rate $w$},
-                samples=1000, 
-                xmin=0,
-                xmax=22,
-                ymin=0,
-                ymax=1]
-            \addplot[line width=0.8mm,red,domain={0:5}]{0.25};
-            \addplot[line width=0.8mm,red,domain={5:22}]{(0.655)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(-2/3)};
-            \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,0.24) (5,0.655)};
-            \node[anchor=center,label=west:{$\overline{r}$}] at (axis cs:0,0.25){};
-            \node[anchor=center,label=west:{$r_0$}] at (axis cs:0.4,0.655){};
-        \end{axis}
-    \end{tikzpicture}
+    % \begin{tikzpicture}
+    %     \begin{axis}[standard,
+    %             ytick=\empty,
+    %             xtick=\empty,
+    %             xticklabels={},
+    %             yticklabels={},
+    %             xlabel={Time $t$},
+    %             ylabel={Wage Rate $w$},
+    %             samples=1000, 
+    %             xmin=0,
+    %             xmax=22,
+    %             ymin=0,
+    %             ymax=1]
+    %         \addplot[line width=0.8mm,red,domain={0:5}]{0.25};
+    %         \addplot[line width=0.8mm,red,domain={5:22}]{(0.655)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(-2/3)};
+    %         \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,0.24) (5,0.655)};
+    %         \node[anchor=center,label=west:{$\overline{r}$}] at (axis cs:0,0.25){};
+    %         \node[anchor=center,label=west:{$r_0$}] at (axis cs:0.4,0.655){};
+    %     \end{axis}
+    % \end{tikzpicture}
 
     
     
@@ -347,23 +347,95 @@
 \pagebreak
 
 \begin{homeworkProblem}[2]{Misallocation and TFP}
-One lesson from the Solow model is that the determinants of long-run growth have to be found in total factor productivity $A_t$. Since $A_t$ is measured as the residual of a growth accounting decomposition,
-TFP is often referred to as a measure of our ignorance. 
-\\ \\
-A recent insight from the academic literature on economic growth is that TFP can be affected by the allocation of factor inputs. This excercise will introduce you to this idea. 
-\\ \\
-Suppose output is produced using two tasks according to $Y=X_1^{\alpha}X_2^{1-\alpha}$. The tasks could be management vs. production work, manufacturing vs. services, or private sector work vs. public (e.g., regulatory, judicial, police) work. 
-\\ \\
-One unit of labor can produce one unit of either task, and the economy is endowed with L units of labor. Finally, suppose that the allocation of labor is such that a fraction $s$ of total labor works in the first task, and teh fraction $1-s$ works in the second task. 
-\\ \\
-A) Derive a production function of the form $Y=f(L)$, and derive an expression for TFP of this production function. 
-\\ \\
-B) Draw how TFP depends on the task allocation $s$ (recall $s \in [0,1])$.
-\\ \\
-C) What is the output maximizing allocation $s^*$? What happens to TFP then?
-\\ \\
-D) In many developing countries, taxes, poor management, information problems, or corruption can lead to a non-optimal allocation of tasks. How can this theory explain that some countries remain poorer than the US? 
+    One lesson from the Solow model is that the determinants of long-run growth have to be found in total factor productivity $A_t$. Since $A_t$ is measured as the residual of a growth accounting decomposition,
+    TFP is often referred to as a measure of our ignorance. 
+    \\ \\
+    A recent insight from the academic literature on economic growth is that TFP can be affected by the allocation of factor inputs. This excercise will introduce you to this idea. 
+    \\ \\
+    Suppose output is produced using two tasks according to $Y=X_1^{\alpha}X_2^{1-\alpha}$. The tasks could be management vs. production work, manufacturing vs. services, or private sector work vs. public (e.g., regulatory, judicial, police) work. 
+    \\ \\
+    One unit of labor can produce one unit of either task, and the economy is endowed with $L$ units of labor. Finally, suppose that the allocation of labor is such that a fraction $s$ of total labor works in the first task, and the fraction $1-s$ works in the second task. 
+    \\ \\
+    A) Derive a production function of the form $Y=f(L)$, and derive an expression for TFP of this production function. 
+    \\ \\
+    B) Draw how TFP depends on the task allocation $s$ (recall $s \in [0,1])$.
+    \\ \\
+    C) What is the output maximizing allocation $s^*$? What happens to TFP then?
+    \\ \\
+    D) In many developing countries, taxes, poor management, information problems, or corruption can lead to a non-optimal allocation of tasks. How can this theory explain that some countries remain poorer than the US? 
+
+    \pagebreak
+    \part
+
+    Derive a production function of the form $Y=f(L)$, and derive an expression for TFP of this production function. 
+    \\ \\
+    \solution
+    \\
+    A production function of the form $Y=f(L)$ given the problem specification could be the following
+
+    \[
+        \begin{split}
+            Y &= (sL)^{\alpha}((1-s)L)^{1-\alpha}
+            \\
+            Y &= s^{\alpha}(1-s)^{1-\alpha}L
+        \end{split}
+    \]
+
+    Total Factor Productivity is the ratio of output to input, or that portion of growth not explained by the change in inputs. In our case, we can divide output by the change in labor
+
+    \[
+        A = \frac{Y}{L} = s^{\alpha}(1-s)^{1-\alpha}
+    \]
+
+    \pagebreak
+    \part
+
+    Draw how TFP depends on the task allocation $s$ (recall $s \in [0,1])$.
+    \\ \\
     
+    \solution
+    \\
+    My answer... (not sure how to answer this question)
+
+    \pagebreak
+    \part
+
+    What is the output maximizing allocation $s^*$? What happens to TFP then?
+    \\ \\
+    \solution
+    \\
+    Output is maximized when TFP is maximized. We can find the optimal allocation $s^*$ by taking the
+    derivative of TFP with respect to a change in $s$ and setting the result equal to zero
+
+    \[
+        \begin{split}
+            \frac{dA}{ds} &= \frac{d}{ds}\left( s^\alpha(1-s)^{1-\alpha} \right)
+            \\
+            &= \alpha s^{\alpha-1}(1-s)^{1-\alpha} - s^{\alpha}(1-\alpha)(1-s)^{-\alpha}   
+            \\
+            0 &= \alpha s^{\alpha-1}(1-s)^{1-\alpha} - s^{\alpha}(1-\alpha)(1-s)^{-\alpha}   
+            \\
+            s^{\alpha}(\alpha-1)(1-s)^{-\alpha} &= \alpha s^{\alpha-1}(1-s)^{1-\alpha}
+            \\
+            s^{\alpha}(1-\alpha) &= \alpha s^{\alpha-1}(1-s)
+            \\
+            s(1-\alpha) &= \alpha (1-s)
+            \\
+            s-s\alpha &= \alpha - \alpha s
+            \\
+            s &= \alpha
+        \end{split}
+    \]
+
+    From this we can see the optimal allocation $s^*$ is reached when $s = \alpha$.
+
+    \pagebreak
+    \part
+
+    In many developing countries, taxes, poor management, information problems, or corruption can lead to a non-optimal allocation of tasks. How can this theory explain that some countries remain poorer than the US?
+    
+    
+        
 \end{homeworkProblem}
 
 \pagebreak
@@ -388,6 +460,166 @@ D) In many developing countries, taxes, poor management, information problems, o
     D) Derive the level of energy extracted at each date $t$, i.e., derive an expression for $E_t$ as a function of initial conditions $N_0$ (the population at date 0). Derive the \textit{total} amount of energy extracted since time 0.
     \\ \\
     E) Fossil energy is in fact in finite supply on Earth. At which date $\tau$ will we have exhausted all fossil fuel? Derive an expression for $\tau$ as a function of model paramters. What will happen then to growth?
+
+    \pagebreak
+    \part
+
+    Derive the equation for the wage rate $w_t$ in the final goods sector. Given the Malthus population dynamics $\frac{N_{t+1}}{N_t} = (\frac{w_t}{w_s})$, what is the population growth rate?
+    \\ \\
+    \solution
+    \\
+    To find the wage rate $w_t$ for labor employed in the final goods sector, we find the marginal product of labor in the production fo these final goods by taking the partial derivative of output with respect to a change in $L_{y,t}$
+    \[
+        \begin{split}
+            w_t = \frac{\partial Y_t}{\partial L_{y,t}} &= \frac{\partial}{\partial L_{y,t}} \left( E_t^{\gamma}L_{y,t}^{1-\gamma} \right)
+            \\
+            &= (1-\gamma)L_{e,t}^{\gamma}L_{y,t}^{-\gamma}
+            \\
+            &= (1-\gamma)\frac{s^{\gamma}N_t^{\gamma}}{(1-s)^{\gamma}N_t^{\gamma}}
+            \\
+            &= (1-\gamma)\left( \frac{s}{1-s} \right)^\gamma
+        \end{split}
+    \]
+
+    Given this expression for our $w_t$, we can find the population growth rate by subsitution
+    \[
+        \begin{split}
+            \frac{N_{t+1}}{N_t} &= \left( \frac{w_t}{w_s} \right)
+            \\
+            \frac{N_{t+1}}{N_t} &= \frac{(1-\gamma)\left( \frac{s}{1-s} \right)^{\gamma}}{w_s}
+            \\
+            \frac{N_{t+1}}{N_t} &= g
+        \end{split}
+    \]
+
+    So our population growth rate in this economy becomes our term $g$ defined earler in the problem specification. The population as a function of time $t$ is then $N_t = N_0 g^t$ since
+    \[
+        \begin{split}
+            N_{t+1} &= N_tg
+            \\
+            t=0 \;\;\;\; N_1 &= N_0g
+            \\
+            t=1 \;\;\;\; N_2 &= N_1g = N_0 g^2
+            \\
+            t=2 \;\;\;\; N_3 &= N_2g=N_0 g^3
+            \\
+            &\dots
+            \\
+            N_t &= N_0 g^t
+        \end{split}
+    \]
+    Therefore, the first time derivative of $N_t$, $\frac{dN_t}{dt}$, is the following
+    \[
+        \frac{dN_t}{dt} = \frac{d}{dt} \left( N_0 e^{tln(g)} \right) = ln(g) N_0 e^{tln(g)} = ln(g) N_t
+    \]
+    
+
+    \pagebreak
+    \part
+
+    What is the economy's growth rate (i.e., the growth rate of $Y_t$)? What is the per capita growth rate (i.e., the growth rate of $Y_t/N_t$)?
+    \\ \\
+    \solution
+    \\
+    To find the economy's growth rate, we find the change in output with respect to a change in time using the first time derivative of $Y_t$. First, I will simplify the expression for output so that it is only in terms of $s$, $\gamma$, and $N_t$
+
+    \[
+        \begin{split}
+            Y_t &= E_t^{\gamma}L_{y,t}^{1-\gamma}
+            \\
+            &= L_{e,t}^{\gamma}L_{y,t}^{1-\gamma}
+            \\
+            &= (sN_t)^{\gamma}((1-s)N_t)^{1-\gamma}
+            \\
+            &= s^{\gamma}(1-s)^{1-\gamma}N_t
+        \end{split}
+    \]
+
+    Now to find the growth rate I'll differentiate this expression with respect to a change in time
+    \[
+        \begin{split}
+            \frac{dY_t}{dt} &= \frac{d}{dt} \left( s^{\gamma}(1-s)^{1-\gamma}N_t \right)
+            \\
+            &= s^{\gamma}(1-s)^{1-\gamma} \frac{dN_t}{dt}
+            \\
+            &= s^{\gamma}(1-s)^{1-\gamma}  ln(g) N_t
+            \\
+            &= ln(g) Y_t
+        \end{split}
+    \]
+    From the above expression we can see that the economy's growth rate is proportional to the population growth rate $g$. To find the per capita growth rate, I'll first divide the expression for output $Y_t$ by population $N_t$ and take the derivative with respect to time
+    \[
+        \begin{split}
+            y_t &= \frac{Y_t}{N_t} = s^{\gamma}(1-s)^{1-\gamma}
+            \\
+            \frac{dy_t}{dt} &= \frac{d}{dt} \left( s^{\gamma}(1-s)^{1-\gamma} \right)
+            \\
+            \frac{dy_t}{dt} &= 0
+        \end{split}
+    \]
+
+    Since neither $s$ or $\gamma$ are functions of time, there is no per capita growth rate in this economy.
+
+    \pagebreak
+    \part
+
+    How do workers fare in this economy compared to (i) a Malthusian economy, and (ii) a Solow economy (with constant $A_t$) that we saw in class?
+    \\ \\
+    \solution
+    \\
+    Compared to a malthusian economy....
+    Just like in a Solow economy with constant TFP, there is no per capita growth in this economy
+
+    \pagebreak
+    \part
+
+    Derive the level of energy extracted at each date $t$, i.e., derive an expression for $E_t$ as a function of initial conditions $N_0$ (the population at date 0). Derive the \textit{total} amount of energy extracted since time 0.
+    \\ \\
+    \solution
+    \\
+    To derive the level of energy extracted $E_t$ as a function of initial conditions $N_0$, we can substitute in our expression for $N_t$ in terms of $N_0$, $g$, and $t$
+    \[
+        \begin{split}
+            E_t = L_{e,t} = sN_t = sN_0g^t
+        \end{split}
+    \]
+    To derive the total amount of energy extracted since $t=0$, we can perform an integral to sum all the infinitesimal changes in energy with respect to a change in time
+    \[
+        \begin{split}
+            \int_0^t E_t \, dt &= \int_0^t sN_0g^t \, dt
+            \\
+            &= sN_0 \int_0^t e^{tln(g)} \, dt
+            \\
+            &= \frac{sN_0}{ln(g)} \left( e^{tln(g)} - 1 \right)
+            \\
+            &= \frac{sN_0}{ln(g)} \left( g^t - 1 \right)
+        \end{split}
+    \]
+
+    \pagebreak
+    \part
+
+    Fossil energy is in fact in finite supply on Earth. At which date $\tau$ will we have exhausted all fossil fuel? Derive an expression for $\tau$ as a function of model paramters. What will happen then to growth?
+    \\ \\ 
+    \solution
+    \\
+    We can find the time $\tau$ when all fossil fuels reserves have been exhausted when $\int_0^\tau E_t \, dt$ is equal to some $E_{\text{total}}$, which encapsulates the Earth's fossil fuel reserves.
+    \[
+        \begin{split}
+            E_\text{total} &= \int_0^\tau E_t \, dt
+            \\
+            E_\text{total} &= \frac{sN_0}{ln(g)} \left( g^\tau - 1 \right)
+            \\
+            \frac{ln(g)}{sN_0} E_\text{total} &= g^\tau - 1
+            \\
+            g^\tau &= \frac{ln(g)}{sN_0} E_\text{total} + 1
+            \\
+            \tau ln(g) &= ln \left( \frac{ln(g)}{sN_0} E_\text{total} + 1 \right)
+            \\
+            \tau &= \frac{ln \left( \frac{ln(g)}{sN_0} E_\text{total} + 1 \right)}{ln(g)}
+        \end{split}
+    \]
+    For times where $t>\tau$, output will be drastically decreased as $E_t = 0$ and should revert back to our Malthusian production model where land once again becomes a binding constraint on output.
 \end{homeworkProblem}
 
 \end{document}
