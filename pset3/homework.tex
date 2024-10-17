@@ -252,7 +252,7 @@
                 ymax=6]
             \addplot[line width=0.8mm,red,domain={0:4.104}]{5.243};
             \addplot[line width=0.8mm,red,domain={4.104:22}]{4.243+(1-4.243)*exp(-0.3*(x-5))+1};
-            \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,5.243)};
+            \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,5.3)};
             \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,5.243){};
             \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
         \end{axis}
@@ -275,6 +275,71 @@
 
     \solution
     \\ \\
+    First we need to find the long run equilibrium wage rate and rental rate on capital. Substituting $\overline{K}$ into the 
+    equations for $w_t$ and $r_t$ we get
+
+    \[
+        \begin{split}
+            \overline{w} &= \frac{2}{3}\Bar{A}\frac{\left( \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)^{1/3}}{\Bar{L}^{1/3}} = \frac{2}{3}\Bar{A}\left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{1/2}
+            \\ \\ 
+            \overline{r} &= \frac{1}{3}\Bar{A}\frac{\Bar{L}^{2/3}}{\left( \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)^{2/3}} = \frac{1}{3}\Bar{A}\left( \frac{\overline{d}}{\overline{s}\overline{A}} \right)
+        \end{split}
+    \]
+
+    We can create the time series plots for the wage rate and the rental rate on capital by substituting in the expression for 
+    $K(t)$ into the equations for $w_t$ and $r_t$
+
+    \[
+        \begin{split}
+            w_t &= \frac{2}{3}\Bar{A}\frac{K_t^{1/3}}{\Bar{L}^{1/3}} = \frac{2}{3}\Bar{A}\frac{\left( \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt} \right)^{1/3}}{\Bar{L}^{1/3}}
+            \\ \\ 
+            r_t &= \frac{1}{3}\Bar{A}\frac{\Bar{L}^{2/3}}{K_t^{2/3}} = \frac{1}{3}\Bar{A}\frac{\Bar{L}^{2/3}}{\left( \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt} \right)^{2/3}}
+        \end{split}
+    \]
+
+
+    \begin{tikzpicture}
+        \begin{axis}[standard,
+                ytick=\empty,
+                xtick=\empty,
+                xticklabels={},
+                yticklabels={},
+                xlabel={Time $t$},
+                ylabel={Wage Rate $w$},
+                samples=1000, 
+                xmin=0,
+                xmax=22,
+                ymin=0,
+                ymax=3]
+            \addplot[line width=0.8mm,red,domain={0:4.104}]{2.414};
+            \addplot[line width=0.8mm,red,domain={2.104:22}]{(1/1.145)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(1/3)+1};
+            \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,2.44)};
+            \node[anchor=center,label=west:{$\overline{w}$}] at (axis cs:0,2.414){};
+            \node[anchor=center,label=west:{$w_0$}] at (axis cs:0.4,1.1){};
+        \end{axis}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \begin{axis}[standard,
+                ytick=\empty,
+                xtick=\empty,
+                xticklabels={},
+                yticklabels={},
+                xlabel={Time $t$},
+                ylabel={Wage Rate $w$},
+                samples=1000, 
+                xmin=0,
+                xmax=22,
+                ymin=0,
+                ymax=1]
+            \addplot[line width=0.8mm,red,domain={0:5}]{0.25};
+            \addplot[line width=0.8mm,red,domain={5:22}]{(0.655)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(-2/3)};
+            \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,0.24) (5,0.655)};
+            \node[anchor=center,label=west:{$\overline{r}$}] at (axis cs:0,0.25){};
+            \node[anchor=center,label=west:{$r_0$}] at (axis cs:0.4,0.655){};
+        \end{axis}
+    \end{tikzpicture}
+
     
     
 \end{homeworkProblem}
