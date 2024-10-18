@@ -185,21 +185,46 @@
                     3]
                 \addplot[line width=0.8mm,cyan,domain={0:2.5}]{x};
                 \addplot[line width=0.8mm,color=brown,domain={0:2.5}]{1.2*(x-0.025)^(1/3)};
-                \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
-                \node[anchor=center,label=south:{\textbf{$K^*$}}] at (axis cs:1.31453,0){};
-                \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
-                \node[anchor=center,label=south:{\textbf{$K_0$}}] at (axis cs:0.75,0){};
-                \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
-                
                 \addplot[mark=* , color=black] coordinates {(1.31453, 1.31453)}; 
-                
+                \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
+                \node[anchor=center,label=south:{$\overline{K}$}] at (axis cs:1.31453,0.05){};
+                \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
+                \node[anchor=center,label=south:{$K_0$}] at (axis cs:0.75,0){};
+                \addplot[dashed, gray, domain=0:1] coordinates {(1.879,0) (1.879,1.50)};
+                \node[anchor=center,label=south:{$K_0$}] at (axis cs:1.879,0){};
+                \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
+                \node[anchor=center,label=south:{$\leftarrow$}] at (axis cs:1.597,-0.05){};
                 \node[anchor=south east, color=black] at (axis cs:2.25, 2.25) {\small $dK_t$};
                 \node[anchor=north west, color=black] at (axis cs:2.1, 1.5) {\small $\Bar{s}Y_t$};
             \end{axis}
         \end{tikzpicture} 
     \end{center}
 
-    It will reach the equilibrium point after enough time periods where investment spending balances out capital depreciation. Or maybe actually golden rule level of capital
+    No matter the initial starting conditions of the economy, the capital 
+    stock will increase or decrease over time to reach steady state. Steady 
+    state is where the investment in capital $\overline{s}Y_t$ is equal 
+    to the depreciation of capital $\overline{d}K_t$. At this point the 
+    capital stock will remain constant over time. The above Solow diagram 
+    shows the direction in which the capital stock will move from $K_0$.
+    \\ \\
+    At steady state $K_{t+1} = K_t = \overline{K}$ and we can use our equations
+    to substitute and solve for $\overline{K}$
+    \[
+        \begin{split}
+            \overline{K} &= \overline{K}+I_t-\overline{dK}
+            \\
+            \text{from (2)} \;\;\; \overline{dK} &= \overline{s}\overline{Y}
+            \\
+            \text{from (1)} \;\;\; \overline{dK} &= \overline{s}\overline{A}\overline{K}^{1/3}\overline{L}^{2/3}
+            \\
+            \overline{K}^{2/3} &= \frac{\overline{s}\overline{A}}{\overline{d}}\overline{L}^{2/3}
+            \\
+            \overline{K} &= \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L}
+        \end{split}
+    \]
+    The above result confirms that the steady state value of $K$ does not
+    depend on the initial conditions but only on our exogenous model 
+    parameters.
 
     \pagebreak
     \part
