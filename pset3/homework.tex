@@ -10,6 +10,7 @@
 \usepackage{algpseudocode}
 \usepackage{enumitem}
 \usepackage{pgfplots}
+\usepackage{subcaption}
 
 \usetikzlibrary{automata,positioning}
 
@@ -411,39 +412,54 @@
     This makes sense considering the marginal product of labor depends directly 
     on the capital stock and the marginal product of capital depends inversely 
     on the capital stock. Over time, the wage rate and rental rate will recover
-    to their steady state values as time approaches infinity. 
+    to their steady state values as time approaches infinity.
 
 \end{homeworkProblem}
 
 \pagebreak
 
 \begin{homeworkProblem}[2]{Misallocation and TFP}
-    One lesson from the Solow model is that the determinants of long-run growth have to be found in total factor productivity $A_t$. Since $A_t$ is measured as the residual of a growth accounting decomposition,
-    TFP is often referred to as a measure of our ignorance. 
+    One lesson from the Solow model is that the determinants of long-run 
+    growth have to be found in total factor productivity $A_t$. Since $A_t$
+    is measured as the residual of a growth accounting decomposition, TFP
+     is often referred to as a measure of our ignorance. 
     \\ \\
-    A recent insight from the academic literature on economic growth is that TFP can be affected by the allocation of factor inputs. This excercise will introduce you to this idea. 
+    A recent insight from the academic literature on economic growth is that 
+    TFP can be affected by the allocation of factor inputs. This excercise 
+    will introduce you to this idea. 
     \\ \\
-    Suppose output is produced using two tasks according to $Y=X_1^{\alpha}X_2^{1-\alpha}$. The tasks could be management vs. production work, manufacturing vs. services, or private sector work vs. public (e.g., regulatory, judicial, police) work. 
+    Suppose output is produced using two tasks according to $Y=X_1^{\alpha}X_2^{1-\alpha}$. 
+    The tasks could be management vs. production work, manufacturing vs. 
+    services, or private sector work vs. public (e.g., regulatory, judicial, 
+    police) work. 
     \\ \\
-    One unit of labor can produce one unit of either task, and the economy is endowed with $L$ units of labor. Finally, suppose that the allocation of labor is such that a fraction $s$ of total labor works in the first task, and the fraction $1-s$ works in the second task. 
+    One unit of labor can produce one unit of either task, and the economy 
+    is endowed with $L$ units of labor. Finally, suppose that the allocation 
+    of labor is such that a fraction $s$ of total labor works in the first 
+    task, and the fraction $1-s$ works in the second task. 
     \\ \\
-    A) Derive a production function of the form $Y=f(L)$, and derive an expression for TFP of this production function. 
+    A) Derive a production function of the form $Y=f(L)$, and derive an 
+    expression for TFP of this production function. 
     \\ \\
     B) Draw how TFP depends on the task allocation $s$ (recall $s \in [0,1])$.
     \\ \\
     C) What is the output maximizing allocation $s^*$? What happens to TFP then?
     \\ \\
-    D) In many developing countries, taxes, poor management, information problems, or corruption can lead to a non-optimal allocation of tasks. How can this theory explain that some countries remain poorer than the US? 
+    D) In many developing countries, taxes, poor management, information 
+    problems, or corruption can lead to a non-optimal allocation of tasks.
+    How can this 'theory explain that some countries remain poorer than 
+    the US? 
 
     \pagebreak
     \part
 
-    Derive a production function of the form $Y=f(L)$, and derive an expression for TFP of this production function. 
+    Derive a production function of the form $Y=f(L)$, and derive an expression 
+    for TFP of this production function. 
     \\ \\
     \solution
     \\
-    A production function of the form $Y=f(L)$ given the problem specification could be the following
-
+    A production function of the form $Y=f(L)$ given in the problem specification 
+    could be the following
     \[
         \begin{split}
             Y &= (sL)^{\alpha}((1-s)L)^{1-\alpha}
@@ -451,13 +467,18 @@
             Y &= s^{\alpha}(1-s)^{1-\alpha}L
         \end{split}
     \]
-
-    Total Factor Productivity is the ratio of output to input, or that portion of growth not explained by the change in inputs. In our case, we can divide output by the change in labor
-
+    The production function is broken into two tasks, $X_1$ and $X_2$, where
+    $X_1$ is the task that requires $s$ units of labor and $X_2$ is the task
+    that requires $(1-s)$ units of labor. The total output $Y$ is the product
+    of the output of each task.
+    \\ \\
+    Total Factor Productivity is the ratio of output to input, or that portion
+    of growth not explained by the change in inputs. In our case, we can 
+    divide output by the change in the labor input to find TFP.
     \[
         A = \frac{Y}{L} = s^{\alpha}(1-s)^{1-\alpha}
     \]
-
+    
     \pagebreak
     \part
 
@@ -466,7 +487,77 @@
     
     \solution
     \\
-    My answer... (not sure how to answer this question)
+    Below I have plotted three different TFP functions for different values
+    of $\alpha$. The first plot is for $\alpha = 0.25$, the second plot is
+    for $\alpha = 0.5$, and the third plot is for $\alpha = 0.75$. The
+    general shape of the TFP function is a bell curve with a maximum at
+    $s = \alpha$.
+    \\
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{0.3\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[
+                    width=\textwidth,
+                    height=0.8\textwidth,
+                    xlabel={$s$},
+                    ylabel={},
+                    domain=0:1,
+                    samples=100,
+                    ymin=0, ymax=1,
+                    axis lines=middle,
+                    xtick={\empty},
+                    ytick={\empty},
+                    title={$ \alpha = 0.25 $},
+                    xlabel style={at={(axis description cs:1,-0.1)}, anchor=north},]
+                    \addplot[red, thick] {x^0.25*(1-x)^0.75};
+                \end{axis}
+            \end{tikzpicture}
+        \end{subfigure}
+        \begin{subfigure}{0.3\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[
+                    width=\textwidth,
+                    height=0.8\textwidth,
+                    xlabel={$s$},
+                    domain=0:1,
+                    samples=100,
+                    ymin=0, ymax=1,
+                    axis lines=middle,
+                    xtick={\empty},
+                    ytick={\empty},
+                    title={$ \alpha = 0.5 $},
+                    xlabel style={at={(axis description cs:1,-0.1)}, anchor=north},]
+                    \addplot[red, thick] {x^0.5*(1-x)^0.5};
+                \end{axis}
+            \end{tikzpicture}
+        \end{subfigure}
+        \begin{subfigure}{0.3\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[
+                    width=\textwidth,
+                    height=0.8\textwidth,
+                    xlabel={$s$},
+                    domain=0:1,
+                    samples=100,
+                    ymin=0, ymax=1,
+                    axis lines=middle,
+                    xtick={\empty},
+                    ytick={\empty},
+                    title={$ \alpha = 0.75 $},
+                    xlabel style={at={(axis description cs:1,-0.1)}, anchor=north},]
+                    \addplot[red, thick] {x^0.75*(1-x)^0.25};
+                \end{axis}
+            \end{tikzpicture}
+        \end{subfigure}
+    \end{figure}
+    \\
+    From the above plots we can see that TFP is maximized at some value of $s$
+    between 0 and 1. The exact value of $s$ that maximizes TFP is $\alpha$,
+    which is shown in the next part.
 
     \pagebreak
     \part
@@ -475,9 +566,9 @@
     \\ \\
     \solution
     \\
-    Output is maximized when TFP is maximized. We can find the optimal allocation $s^*$ by taking the
-    derivative of TFP with respect to a change in $s$ and setting the result equal to zero
-
+    Output in this case is maximized when TFP is maximized. We can find the
+    optimal allocation $s^*$ by taking the derivative of TFP with respect 
+    to a change in $s$ and setting the result equal to zero
     \[
         \begin{split}
             \frac{dA}{ds} &= \frac{d}{ds}\left( s^\alpha(1-s)^{1-\alpha} \right)
@@ -498,12 +589,24 @@
         \end{split}
     \]
 
-    From this we can see the optimal allocation $s^*$ is reached when $s = \alpha$.
+    From this we can see the optimal allocation $s^*$ is reached when 
+    $s = \alpha$. At this point, TFP is maximized and the economy is
+    producing output at its maximum level given a fixed amount of labor.
 
     \pagebreak
     \part
 
-    In many developing countries, taxes, poor management, information problems, or corruption can lead to a non-optimal allocation of tasks. How can this theory explain that some countries remain poorer than the US?
+    In many developing countries, taxes, poor management, information problems, 
+    or corruption can lead to a non-optimal allocation of tasks. How can 
+    this theory explain that some countries remain poorer than the US?
+    \\ \\
+    \solution
+    \\
+    If in these developing countries there are factors that prohibit an efficient
+    task allocation $s$, then TFP will be lower than it could be. Considering that
+    under the Solow model there is only long run per capita growth with increasing
+    TFP, these countries will remain poorer than the US if there allocation of 
+    labor remains inefficient.
     
     
         
