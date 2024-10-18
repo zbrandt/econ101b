@@ -175,37 +175,37 @@
     Solow diagram, explain how the capital stock will evolve over time.
     \\ \\
     \solution
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{axis}[standard,
-                    ytick=\empty,
-                    xtick=\empty,
-                    xticklabels={},
-                    yticklabels={},
-                    xlabel={Capital $K$},
-                    ylabel={Investment $I$},
-                    samples=1000, 
-                    xmin=0,
-                    xmax=3,
-                    ymin=0,
-                    ymax=
-                    3]
-                \addplot[line width=0.8mm,cyan,domain={0:2.5}]{x};
-                \addplot[line width=0.8mm,color=brown,domain={0:2.5}]{1.2*(x-0.025)^(1/3)};
-                \addplot[mark=* , color=black] coordinates {(1.31453, 1.31453)}; 
-                \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
-                \node[anchor=center,label=south:{$\overline{K}$}] at (axis cs:1.31453,0.05){};
-                \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
-                \node[anchor=center,label=south:{$K_0$}] at (axis cs:0.75,0){};
-                \addplot[dashed, gray, domain=0:1] coordinates {(1.879,0) (1.879,1.50)};
-                \node[anchor=center,label=south:{$K_0$}] at (axis cs:1.879,0){};
-                \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
-                \node[anchor=center,label=south:{$\leftarrow$}] at (axis cs:1.597,-0.05){};
-                \node[anchor=south east, color=black] at (axis cs:2.25, 2.25) {\small $dK_t$};
-                \node[anchor=north west, color=black] at (axis cs:2.1, 1.5) {\small $\Bar{s}Y_t$};
-            \end{axis}
-        \end{tikzpicture} 
-    \end{center}
+    % \begin{center}
+    %     \begin{tikzpicture}
+    %         \begin{axis}[standard,
+    %                 ytick=\empty,
+    %                 xtick=\empty,
+    %                 xticklabels={},
+    %                 yticklabels={},
+    %                 xlabel={Capital $K$},
+    %                 ylabel={Investment $I$},
+    %                 samples=1000, 
+    %                 xmin=0,
+    %                 xmax=3,
+    %                 ymin=0,
+    %                 ymax=
+    %                 3]
+    %             \addplot[line width=0.8mm,cyan,domain={0:2.5}]{x};
+    %             \addplot[line width=0.8mm,color=brown,domain={0:2.5}]{1.2*(x-0.025)^(1/3)};
+    %             \addplot[mark=* , color=black] coordinates {(1.31453, 1.31453)}; 
+    %             \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
+    %             \node[anchor=center,label=south:{$\overline{K}$}] at (axis cs:1.31453,0.05){};
+    %             \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
+    %             \node[anchor=center,label=south:{$K_0$}] at (axis cs:0.75,0){};
+    %             \addplot[dashed, gray, domain=0:1] coordinates {(1.879,0) (1.879,1.50)};
+    %             \node[anchor=center,label=south:{$K_0$}] at (axis cs:1.879,0){};
+    %             \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
+    %             \node[anchor=center,label=south:{$\leftarrow$}] at (axis cs:1.597,-0.05){};
+    %             \node[anchor=south east, color=black] at (axis cs:2.25, 2.25) {\small $dK_t$};
+    %             \node[anchor=north west, color=black] at (axis cs:2.1, 1.5) {\small $\Bar{s}Y_t$};
+    %         \end{axis}
+    %     \end{tikzpicture} 
+    % \end{center}
 
     No matter the initial starting conditions of the economy, the capital 
     stock will increase or decrease over time to reach steady state. Steady 
@@ -275,50 +275,50 @@
     these plots will depend on the initial conditions and the model parameters,
     the general shape of the recovery should look the same.
     \\ \\
-    \begin{minipage}{0.5\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[standard,
-                    ytick=\empty,
-                    xtick=\empty,
-                    xticklabels={},
-                    yticklabels={},
-                    xlabel={Time},
-                    ylabel={Capital},
-                    samples=1000, 
-                    xmin=0,
-                    xmax=20,
-                    ymin=0,
-                    ymax=5]
-                \addplot[line width=0.8mm,red,domain={0:5}]{4.243};
-                \addplot[line width=0.8mm,red,domain={5:20}]{4.243+(1-4.243)*exp(-0.3*(x-5))};
-                \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1) (5,4.29)};
-                \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,4.243){};
-                \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
-            \end{axis}
-        \end{tikzpicture}    
-    \end{minipage}
-    \begin{minipage}{0.5\textwidth}
-        \begin{tikzpicture}
-                \begin{axis}[standard,
-                        ytick=\empty,
-                        xtick=\empty,
-                        xticklabels={},
-                        yticklabels={},
-                        xlabel={Time},
-                        ylabel={Output},
-                        samples=1000, 
-                        xmin=0,
-                        xmax=20,
-                        ymin=0,
-                        ymax=4]
-                    \addplot[line width=0.8mm,red,domain={0:5}]{3.182};
-                    \addplot[line width=0.8mm,red,domain={5:20}]{1.966*(4.243+(1-4.243)*exp(-0.3*(x-5)))^(1/3)};
-                    \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1.966) (5,3.22)};
-                    \node[anchor=center,label=west:{$\overline{Y}$}] at (axis cs:0,3.182){};
-                    \node[anchor=center,label=west:{$Y_0$}] at (axis cs:0.4,1.966){};
-                \end{axis}
-            \end{tikzpicture}    
-    \end{minipage}
+    % \begin{minipage}{0.5\textwidth}
+    %     \begin{tikzpicture}
+    %         \begin{axis}[standard,
+    %                 ytick=\empty,
+    %                 xtick=\empty,
+    %                 xticklabels={},
+    %                 yticklabels={},
+    %                 xlabel={Time},
+    %                 ylabel={Capital},
+    %                 samples=1000, 
+    %                 xmin=0,
+    %                 xmax=20,
+    %                 ymin=0,
+    %                 ymax=5]
+    %             \addplot[line width=0.8mm,red,domain={0:5}]{4.243};
+    %             \addplot[line width=0.8mm,red,domain={5:20}]{4.243+(1-4.243)*exp(-0.3*(x-5))};
+    %             \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1) (5,4.29)};
+    %             \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,4.243){};
+    %             \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
+    %         \end{axis}
+    %     \end{tikzpicture}    
+    % \end{minipage}
+    % \begin{minipage}{0.5\textwidth}
+    %     \begin{tikzpicture}
+    %             \begin{axis}[standard,
+    %                     ytick=\empty,
+    %                     xtick=\empty,
+    %                     xticklabels={},
+    %                     yticklabels={},
+    %                     xlabel={Time},
+    %                     ylabel={Output},
+    %                     samples=1000, 
+    %                     xmin=0,
+    %                     xmax=20,
+    %                     ymin=0,
+    %                     ymax=4]
+    %                 \addplot[line width=0.8mm,red,domain={0:5}]{3.182};
+    %                 \addplot[line width=0.8mm,red,domain={5:20}]{1.966*(4.243+(1-4.243)*exp(-0.3*(x-5)))^(1/3)};
+    %                 \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1.966) (5,3.22)};
+    %                 \node[anchor=center,label=west:{$\overline{Y}$}] at (axis cs:0,3.182){};
+    %                 \node[anchor=center,label=west:{$Y_0$}] at (axis cs:0.4,1.966){};
+    %             \end{axis}
+    %         \end{tikzpicture}    
+    % \end{minipage}
     \\ \\ \\
     From the above, we can see that the capital stock and output fall sharply
     to $K_0$ and $Y_0$ respectively due to the war. Over time, the economy 
@@ -329,7 +329,8 @@
     \pagebreak
     \part
 
-    Recall that with competitive labor and capital markets the wage rate and the rental rate on capital will be given by
+    Recall that with competitive labor and capital markets the wage rate 
+    and the rental rate on capital will be given by
     \[
         \begin{split}
             \frac{2}{3}\Bar{A}\frac{K_t^{1/3}}{\Bar{L}^{1/3}} &= w_t
@@ -338,14 +339,14 @@
             \\
         \end{split}
     \]
-    Using time series plots, describe the evolution of the wage rate and the rental rate on capital that occur due to the war in qualitative terms.
-    \\
-
-    \solution
+    Using time series plots, describe the evolution of the wage rate and 
+    the rental rate on capital that occur due to the war in qualitative terms.
     \\ \\
-    First we need to find the long run equilibrium wage rate and rental rate on capital. Substituting $\overline{K}$ into the 
+    \solution
+    \\
+    First we need to find the long run equilibrium wage rate and rental rate 
+    on capital. Substituting our expression for $\overline{K}$ into the above 
     equations for $w_t$ and $r_t$ we get
-
     \[
         \begin{split}
             \overline{w} &= \frac{2}{3}\Bar{A}\frac{\left( \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)^{1/3}}{\Bar{L}^{1/3}} = \frac{2}{3}\Bar{A}\left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{1/2}
@@ -354,62 +355,64 @@
         \end{split}
     \]
 
-    We can create the time series plots for the wage rate and the rental rate on capital by substituting in the expression for 
-    $K(t)$ into the equations for $w_t$ and $r_t$
+    We can create the time series plots for the wage rate and the rental 
+    rate on capital by substituting in our time series expression for 
+    $K_t$ from B) into the equations for $w_t$ and $r_t$ and plotting.
+    Two possible plots for the wage rate and rental rate on capital 
+    respectively are shown below.
+    \\ \\
+    \begin{minipage}{0.5\textwidth}
+        \begin{tikzpicture}
+            \begin{axis}[standard,
+                    ytick=\empty,
+                    xtick=\empty,
+                    xticklabels={},
+                    yticklabels={},
+                    xlabel={Time},
+                    ylabel={Wage},
+                    samples=1000, 
+                    xmin=0,
+                    xmax=20,
+                    ymin=0,
+                    ymax=2]
+                \addplot[line width=0.8mm,red,domain={0:5}]{1.414};
+                \addplot[line width=0.8mm,red,domain={5:20}]{(0.874)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(1/3)};
+                \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,0.875) (5,1.424)};
+                \node[anchor=center,label=west:{$\overline{w}$}] at (axis cs:0,1.414){};
+                \node[anchor=center,label=west:{$w_0$}] at (axis cs:0.4,0.875){};
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}   
+        \begin{tikzpicture}
+            \begin{axis}[standard,
+                    ytick=\empty,
+                    xtick=\empty,
+                    xticklabels={},
+                    yticklabels={},
+                    xlabel={Time},
+                    ylabel={Rental rate},
+                    samples=1000, 
+                    xmin=0,
+                    xmax=20,
+                    ymin=0,
+                    ymax=1]
+                \addplot[line width=0.8mm,red,domain={0:5}]{0.25};
+                \addplot[line width=0.8mm,red,domain={5:22}]{(0.655)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(-2/3)};
+                \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,0.24) (5,0.655)};
+                \node[anchor=center,label=west:{$\overline{r}$}] at (axis cs:0,0.25){};
+                \node[anchor=center,label=west:{$r_0$}] at (axis cs:0.4,0.655){};
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \\ \\ \\
+    From the above plots we can see that the wage rate will fall sharply to 
+    $w_0$ and the rental rate will spike to $r_0$ respectively due to the war.
+    This makes sense considering the marginal product of labor depends directly 
+    on the capital stock and the marginal product of capital depends inversely 
+    on the capital stock. Over time, the wage rate and rental rate will recover
+    to their steady state values as time approaches infinity. 
 
-    \[
-        \begin{split}
-            w_t &= \frac{2}{3}\Bar{A}\frac{K_t^{1/3}}{\Bar{L}^{1/3}} = \frac{2}{3}\Bar{A}\frac{\left( \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt} \right)^{1/3}}{\Bar{L}^{1/3}}
-            \\ \\ 
-            r_t &= \frac{1}{3}\Bar{A}\frac{\Bar{L}^{2/3}}{K_t^{2/3}} = \frac{1}{3}\Bar{A}\frac{\Bar{L}^{2/3}}{\left( \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt} \right)^{2/3}}
-        \end{split}
-    \]
-
-
-    % \begin{tikzpicture}
-    %     \begin{axis}[standard,
-    %             ytick=\empty,
-    %             xtick=\empty,
-    %             xticklabels={},
-    %             yticklabels={},
-    %             xlabel={Time $t$},
-    %             ylabel={Wage Rate $w$},
-    %             samples=1000, 
-    %             xmin=0,
-    %             xmax=22,
-    %             ymin=0,
-    %             ymax=3]
-    %         \addplot[line width=0.8mm,red,domain={0:4.104}]{2.414};
-    %         \addplot[line width=0.8mm,red,domain={2.104:22}]{(1/1.145)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(1/3)+1};
-    %         \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,2.44)};
-    %         \node[anchor=center,label=west:{$\overline{w}$}] at (axis cs:0,2.414){};
-    %         \node[anchor=center,label=west:{$w_0$}] at (axis cs:0.4,1.1){};
-    %     \end{axis}
-    % \end{tikzpicture}
-
-    % \begin{tikzpicture}
-    %     \begin{axis}[standard,
-    %             ytick=\empty,
-    %             xtick=\empty,
-    %             xticklabels={},
-    %             yticklabels={},
-    %             xlabel={Time $t$},
-    %             ylabel={Wage Rate $w$},
-    %             samples=1000, 
-    %             xmin=0,
-    %             xmax=22,
-    %             ymin=0,
-    %             ymax=1]
-    %         \addplot[line width=0.8mm,red,domain={0:5}]{0.25};
-    %         \addplot[line width=0.8mm,red,domain={5:22}]{(0.655)*(4.243+(-3.243)*exp(-0.3*(x-5)))^(-2/3)};
-    %         \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,0.24) (5,0.655)};
-    %         \node[anchor=center,label=west:{$\overline{r}$}] at (axis cs:0,0.25){};
-    %         \node[anchor=center,label=west:{$r_0$}] at (axis cs:0.4,0.655){};
-    %     \end{axis}
-    % \end{tikzpicture}
-
-    
-    
 \end{homeworkProblem}
 
 \pagebreak
