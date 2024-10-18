@@ -168,35 +168,36 @@
     Suppose the economy starts off with a capital stock $K_0$. Using the Solow diagram, explain how the capital stock will evolve over time.
     \\ \\
     \solution
-    \\ \\
-    % \begin{tikzpicture}
-    %     \begin{axis}[standard,
-    %             ytick=\empty,
-    %             xtick=\empty,
-    %             xticklabels={},
-    %             yticklabels={},
-    %             xlabel={Capital $K$},
-    %             ylabel={Investment $I$},
-    %             samples=1000, 
-    %             xmin=0,
-    %             xmax=3,
-    %             ymin=0,
-    %             ymax=
-    %             3]
-    %         \addplot[line width=0.8mm,cyan,domain={0:2.5}]{x};
-    %         \addplot[line width=0.8mm,color=brown,domain={0:2.5}]{1.2*(x-0.025)^(1/3)};
-    %         \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
-    %         \node[anchor=center,label=south:{\textbf{$K^*$}}] at (axis cs:1.31453,0){};
-    %         \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
-    %         \node[anchor=center,label=south:{\textbf{$K_0$}}] at (axis cs:0.75,0){};
-    %         \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
-            
-    %         \addplot[mark=* , color=black] coordinates {(1.31453, 1.31453)}; 
-            
-    %         \node[anchor=south east, color=black] at (axis cs:2.25, 2.25) {\small $dK_t$};
-    %         \node[anchor=north west, color=black] at (axis cs:2.1, 1.5) {\small $\Bar{s}Y_t$};
-    %     \end{axis}
-    % \end{tikzpicture}
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[standard,
+                    ytick=\empty,
+                    xtick=\empty,
+                    xticklabels={},
+                    yticklabels={},
+                    xlabel={Capital $K$},
+                    ylabel={Investment $I$},
+                    samples=1000, 
+                    xmin=0,
+                    xmax=3,
+                    ymin=0,
+                    ymax=
+                    3]
+                \addplot[line width=0.8mm,cyan,domain={0:2.5}]{x};
+                \addplot[line width=0.8mm,color=brown,domain={0:2.5}]{1.2*(x-0.025)^(1/3)};
+                \addplot[dashed, gray, domain=0:1] coordinates {(1.31453,0) (1.31453,1.31453)};
+                \node[anchor=center,label=south:{\textbf{$K^*$}}] at (axis cs:1.31453,0){};
+                \addplot[dashed, gray, domain=0:1] coordinates {(0.75,0) (0.75,1.09027)};
+                \node[anchor=center,label=south:{\textbf{$K_0$}}] at (axis cs:0.75,0){};
+                \node[anchor=center,label=south:{$\rightarrow$}] at (axis cs:1.032265,-0.05){};
+                
+                \addplot[mark=* , color=black] coordinates {(1.31453, 1.31453)}; 
+                
+                \node[anchor=south east, color=black] at (axis cs:2.25, 2.25) {\small $dK_t$};
+                \node[anchor=north west, color=black] at (axis cs:2.1, 1.5) {\small $\Bar{s}Y_t$};
+            \end{axis}
+        \end{tikzpicture} 
+    \end{center}
 
     It will reach the equilibrium point after enough time periods where investment spending balances out capital depreciation. Or maybe actually golden rule level of capital
 
@@ -208,7 +209,7 @@
     \\
     
     \solution 
-    \\ \\
+    \\
     If none of the exogenous variables have changed for a long period of time, then output and capital will have reached their equilibrium points. We can solve for the long run, or steady state, when $K_{t+1} = K_t = \overline{K}$. Substituting $\overline{K}$ into (4)
     \[
         \begin{split}
@@ -224,39 +225,66 @@
         \end{split}
     \]
 
-    Now, to find the time series plots we need to solve the differential equation $\frac{dK}{dt} = sAK^{1/3}L^{2/3} - dK$. General solutions to this nonlinear differential equation take the form
+    Now, to find the time series plots of $Y_t$ and $K_t$ we need to solve the differential equation $\frac{dK}{dt} = sAK^{1/3}L^{2/3} - dK$. General solutions to this nonlinear differential equation take the form
     \[
         \begin{split}
             K(t) = \overline{K} - \left( K_0 - \overline{K} \right)e^{-dt}
         \end{split}
     \]
-    and subsituting in our expression for $\overline{K}$ this becomes
+    and subsituting in our expression for $\overline{K}$ our plots for output and capital are
     \[
         \begin{split}
-            K(t) = \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt}        
+            K(t) &= \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt}
+            \\
+            Y(t) &= \overline{A} (K(t))^{1/3} \overline{L}^{2/3} 
         \end{split}
     \]
-
-    % \begin{tikzpicture}
-    %     \begin{axis}[standard,
-    %             ytick=\empty,
-    %             xtick=\empty,
-    %             xticklabels={},
-    %             yticklabels={},
-    %             xlabel={Time $t$},
-    %             ylabel={Capital $K$},
-    %             samples=1000, 
-    %             xmin=0,
-    %             xmax=22,
-    %             ymin=0,
-    %             ymax=6]
-    %         \addplot[line width=0.8mm,red,domain={0:4.104}]{5.243};
-    %         \addplot[line width=0.8mm,red,domain={4.104:22}]{4.243+(1-4.243)*exp(-0.3*(x-5))+1};
-    %         \addplot[line width=0.8mm,red,domain=0:5] coordinates {(4.104,1) (4.104,5.3)};
-    %         \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,5.243){};
-    %         \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
-    %     \end{axis}
-    % \end{tikzpicture}
+    % \begin{minipage}{0.5\textwidth}
+    %     \begin{tikzpicture}
+    %         \begin{axis}[standard,
+    %                 ytick=\empty,
+    %                 xtick=\empty,
+    %                 xticklabels={},
+    %                 yticklabels={},
+    %                 xlabel={Time},
+    %                 ylabel={Capital},
+    %                 samples=1000, 
+    %                 xmin=0,
+    %                 xmax=20,
+    %                 ymin=0,
+    %                 ymax=5]
+    %             \addplot[line width=0.8mm,red,domain={0:5}]{4.243};
+    %             \addplot[line width=0.8mm,red,domain={5:20}]{4.243+(1-4.243)*exp(-0.3*(x-5))};
+    %             \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1) (5,4.29)};
+    %             \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,4.243){};
+    %             \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
+    %         \end{axis}
+    %     \end{tikzpicture}    
+    % \end{minipage}
+    % \begin{minipage}{0.5\textwidth}
+    %     \begin{tikzpicture}
+    %             \begin{axis}[standard,
+    %                     ytick=\empty,
+    %                     xtick=\empty,
+    %                     xticklabels={},
+    %                     yticklabels={},
+    %                     xlabel={Time},
+    %                     ylabel={Output},
+    %                     samples=1000, 
+    %                     xmin=0,
+    %                     xmax=20,
+    %                     ymin=0,
+    %                     ymax=4]
+    %                 \addplot[line width=0.8mm,red,domain={0:5}]{3.182};
+    %                 \addplot[line width=0.8mm,red,domain={5:20}]{1.966*(4.243+(1-4.243)*exp(-0.3*(x-5)))^(1/3)};
+    %                 \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1.966) (5,3.22)};
+    %                 \node[anchor=center,label=west:{$\overline{Y}$}] at (axis cs:0,3.182){};
+    %                 \node[anchor=center,label=west:{$Y_0$}] at (axis cs:0.4,1.966){};
+    %             \end{axis}
+    %         \end{tikzpicture}    
+    % \end{minipage}
+    
+    
 
     \pagebreak
     \part
