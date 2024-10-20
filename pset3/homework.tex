@@ -254,77 +254,87 @@
     if none of the model parameters have changed, the economy will recover
     and output and capital will return to their steady state values.
     \\ \\
-    To find these time series plots of $Y_t$ and $K_t$ we need to solve the
-    differential equation $\frac{dK}{dt} = sAK^{1/3}L^{2/3} - dK$ from (4). 
-    General  solutions to this nonlinear differential equation take the form
-    \[
-        \begin{split}
-            K_t = \overline{K} - \left( K_0 - \overline{K} \right)e^{-dt}
-        \end{split}
-    \]
-    and subsituting in our expression for $\overline{K}$ our time series 
-    plots for output and capital are
-    \[
-        \begin{split}
-            K_t &= \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt}
-            \\
-            Y_t &= \overline{A} K_t^{1/3} \overline{L}^{2/3} \;\;\; \text{from (1)}
-        \end{split}
-    \]
-    Two potential plots for $Y_t$ and $K_t$ are shown below. The first plot
-    is of $K_t$ and the second plot is of $Y_t$. While the exact shape of
-    these plots will depend on the initial conditions and the model parameters,
-    the general shape of the recovery should look the same.
+    % To find these time series plots of $Y_t$ and $K_t$ we need to solve the
+    % differential equation $\frac{dK}{dt} = sAK^{1/3}L^{2/3} - dK$ from (4). 
+    % General  solutions to this nonlinear differential equation take the form
+    % \[
+    %     \begin{split}
+    %         K_t = \overline{K} - \left( K_0 - \overline{K} \right)e^{-dt}
+    %     \end{split}
+    % \]
+    % and subsituting in our expression for $\overline{K}$ our time series 
+    % plots for output and capital are
+    % \[
+    %     \begin{split}
+    %         K_t &= \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} - \left( K_0 - \left( \frac{\overline{s}\overline{A}}{\overline{d}} \right)^{3/2}\overline{L} \right)e^{-dt}
+    %         \\
+    %         Y_t &= \overline{A} K_t^{1/3} \overline{L}^{2/3} \;\;\; \text{from (1)}
+    %     \end{split}
+    % \]
+    Two potential time series plots for $Y_t$ and $K_t$ are shown below. The 
+    first plot is of $K_t$ and the second plot is of $Y_t$. While the exact shape 
+    of these plots will depend on the initial conditions and the model parameters,
+    the general shape of the recovery should look the same as below.
     \\ \\
-    % \begin{minipage}{0.5\textwidth}
-    %     \begin{tikzpicture}
-    %         \begin{axis}[standard,
-    %                 ytick=\empty,
-    %                 xtick=\empty,
-    %                 xticklabels={},
-    %                 yticklabels={},
-    %                 xlabel={Time},
-    %                 ylabel={Capital},
-    %                 samples=1000, 
-    %                 xmin=0,
-    %                 xmax=20,
-    %                 ymin=0,
-    %                 ymax=5]
-    %             \addplot[line width=0.8mm,red,domain={0:5}]{4.243};
-    %             \addplot[line width=0.8mm,red,domain={5:20}]{4.243+(1-4.243)*exp(-0.3*(x-5))};
-    %             \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1) (5,4.29)};
-    %             \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,4.243){};
-    %             \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
-    %         \end{axis}
-    %     \end{tikzpicture}    
-    % \end{minipage}
-    % \begin{minipage}{0.5\textwidth}
-    %     \begin{tikzpicture}
-    %             \begin{axis}[standard,
-    %                     ytick=\empty,
-    %                     xtick=\empty,
-    %                     xticklabels={},
-    %                     yticklabels={},
-    %                     xlabel={Time},
-    %                     ylabel={Output},
-    %                     samples=1000, 
-    %                     xmin=0,
-    %                     xmax=20,
-    %                     ymin=0,
-    %                     ymax=4]
-    %                 \addplot[line width=0.8mm,red,domain={0:5}]{3.182};
-    %                 \addplot[line width=0.8mm,red,domain={5:20}]{1.966*(4.243+(1-4.243)*exp(-0.3*(x-5)))^(1/3)};
-    %                 \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1.966) (5,3.22)};
-    %                 \node[anchor=center,label=west:{$\overline{Y}$}] at (axis cs:0,3.182){};
-    %                 \node[anchor=center,label=west:{$Y_0$}] at (axis cs:0.4,1.966){};
-    %             \end{axis}
-    %         \end{tikzpicture}    
-    % \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{tikzpicture}
+            \begin{axis}[standard,
+                    ytick=\empty,
+                    xtick=\empty,
+                    xticklabels={},
+                    yticklabels={},
+                    xlabel={Time},
+                    ylabel={Capital},
+                    samples=1000, 
+                    xmin=0,
+                    xmax=20,
+                    ymin=0,
+                    ymax=5]
+                \addplot[line width=0.8mm,red,domain={0:5}]{4.243};
+                \addplot[line width=0.8mm,red,domain={5:20}]{4.243+(1-4.243)*exp(-0.3*(x-5))};
+                \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1) (5,4.29)};
+                \node[anchor=center,label=west:{$\overline{K}$}] at (axis cs:0,4.243){};
+                \node[anchor=center,label=west:{$K_0$}] at (axis cs:0.4,1.1){};
+            \end{axis}
+        \end{tikzpicture}    
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{tikzpicture}
+                \begin{axis}[standard,
+                        ytick=\empty,
+                        xtick=\empty,
+                        xticklabels={},
+                        yticklabels={},
+                        xlabel={Time},
+                        ylabel={Output},
+                        samples=1000, 
+                        xmin=0,
+                        xmax=20,
+                        ymin=0,
+                        ymax=4]
+                    \addplot[line width=0.8mm,red,domain={0:5}]{3.182};
+                    \addplot[line width=0.8mm,red,domain={5:20}]{1.966*(4.243+(1-4.243)*exp(-0.3*(x-5)))^(1/3)};
+                    \addplot[line width=0.8mm,red,domain=0:5] coordinates {(5,1.966) (5,3.22)};
+                    \node[anchor=center,label=west:{$\overline{Y}$}] at (axis cs:0,3.182){};
+                    \node[anchor=center,label=west:{$Y_0$}] at (axis cs:0.4,1.966){};
+                \end{axis}
+            \end{tikzpicture}    
+    \end{minipage}
     \\ \\ \\
     From the above, we can see that the capital stock and output fall sharply
     to $K_0$ and $Y_0$ respectively due to the war. Over time, the economy 
     will recover and both capital and output will approach their steady 
     states as time goes to infinity.
+    \\ \\
+    The recovery in the capital stock and output, which is a function of the capital
+    stock, share a similar pattern: initially a very sharp recovery that levels
+    off. Considering equation (4) from the problem specification, this makes sense
+    since investment $I_s$ will initially be far greater than the depreciation
+    $\overline{d}K_t$ since $K$ has fallen so dramatically and because the cube
+    root function of capital in output (which determines $I_s$) initally grows
+    quickly. However, as we approach steady state, the two will get closer to
+    cancelling as there are diminishing returns to output from additional capital
+    and because depreciation grows directly with the capital stock.
     
 
     \pagebreak
@@ -357,7 +367,7 @@
     \]
 
     We can create the time series plots for the wage rate and the rental 
-    rate on capital by substituting in our time series expression for 
+    rate on capital by substituting in a time series expression for 
     $K_t$ from B) into the equations for $w_t$ and $r_t$ and plotting.
     Two possible plots for the wage rate and rental rate on capital 
     respectively are shown below.
@@ -409,10 +419,13 @@
     \\ \\ \\
     From the above plots we can see that the wage rate will fall sharply to 
     $w_0$ and the rental rate will spike to $r_0$ respectively due to the war.
-    This makes sense considering the marginal product of labor depends directly 
-    on the capital stock and the marginal product of capital depends inversely 
-    on the capital stock. Over time, the wage rate and rental rate will recover
-    to their steady state values as time approaches infinity.
+    This makes sense considering the expressions for the marginal products of 
+    labor and capital in this problem specification, which equal $w_t$ and $r_t$
+    respectively. In the case of the wage, $w_t \propto K_t^{1/3}$, whereas
+    for the rental rate, $r_t \propto K_t^{-2/3}$. That is, the wage rate will
+    fall with the capital stock, as workers' product decreases, while the rental
+    rate will shoot up as $r_t$ is decreasing in $K$, which makes sense considering
+    supply-and-demand mechanics.
 
 \end{homeworkProblem}
 
@@ -605,8 +618,8 @@
     If in these developing countries there are factors that prohibit an efficient
     task allocation $s$, then TFP will be lower than it could be. Considering that
     under the Solow model there is only long run per capita growth with increasing
-    TFP, these countries will remain poorer than the US if there allocation of 
-    labor remains inefficient.
+    TFP, these countries will remain poorer than the US and not converge if there 
+    allocation of labor remains inefficient.
     
     
         
@@ -718,7 +731,7 @@
             \\
             &= s^{\gamma}(1-s)^{1-\gamma}  ln(g) N_t
             \\
-            &= ln(g) Y_t
+            &= ln(g) N_t
         \end{split}
     \]
     From the above expression we can see that the economy's growth rate is proportional to the population growth rate $g$. To find the per capita growth rate, I'll first divide the expression for output $Y_t$ by population $N_t$ and take the derivative with respect to time
