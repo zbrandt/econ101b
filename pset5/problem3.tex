@@ -119,7 +119,113 @@
     \\ \\
     \solution
 
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.9\textwidth, % Make the plot wider
+            height=0.5\textwidth,
+            xmin=-5,
+            xmax=20,
+            axis line style={line width=1pt},
+            xlabel={Time $t$},
+            ylabel={},
+            title style={font=\large, align=center},
+            xlabel style={font=\large},
+            legend style={
+                at={(0.5,1.15)}, % Place legend below the plot
+                anchor=north,
+                legend columns=-1, % Arrange legend in a single row
+                font=\small,
+                draw=black % Add a border to the legend
+            },
+            grid=both, % Add gridlines
+            minor grid style={dashed, gray!30}, % Style for minor gridlines
+            major grid style={solid, gray!60}, % Style for major gridlines
+            ]
+            \draw[thick, black] (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymin}) -- 
+                                (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymax});
+            \draw[thick, black] (axis cs: \pgfkeysvalueof{/pgfplots/xmin}, 0) -- 
+                                (axis cs: \pgfkeysvalueof{/pgfplots/xmax}, 0);
+                                
+            \addplot[blue, thick, mark=*] 
+            table[x=time, y=output, col sep=comma] {depression.csv};
+            \addlegendentry{$\widetilde{Y}_t$}
     
+            \addplot[red, thick, mark=square*] 
+            table[x=time, y=inflation, col sep=comma] {depression.csv};
+            \addlegendentry{$\pi_t$}
+            
+            \addplot[brown, thick, mark=o] 
+            table[x=time, y=nominal, col sep=comma] {depression.csv};
+            \addlegendentry{$i_t$}
     
+            \addplot[black, thick, mark=x] 
+            table[x=time, y=real, col sep=comma] {depression.csv};
+            \addlegendentry{$R_t$}
+        \end{axis}
+    \end{tikzpicture}
+    \end{center}
+
+    \pagebreak
+
+    \part
+
+    Describe the evolution of the economy in response to the shock in part B)
+    graphically using the IS-LM diagram.
+    \\ \\
+    \solution
+
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=middle,
+            xlabel={$Y$},
+            ylabel={$R$},
+            xtick=\empty,
+            ytick=\empty,
+            xmin=0, xmax=10,
+            ymin=0, ymax=10,
+            xlabel style={at={(axis description cs:1,0)},anchor=west},
+            ylabel style={at={(axis description cs:0,1)},anchor=south},
+            domain=1:9,
+            samples=100,
+            enlargelimits=true,
+            clip=false
+        ]
+            % IS Curve
+            \addplot[smooth, thick, blue] {7 - 0.5*x} node[pos=0.99, below] {\small IS};
+            
+            % Original LM Curve
+            \addplot[smooth, thick, red] {0.5*x + 2} node[pos=0.9, above left] {\small $LM_1$};
+            
+            % Shifted LM Curve
+            \addplot[smooth, thick, red] {0.5*x + 4} node[pos=0.9, above left] {\small $LM_2$};
+            
+            % Equilibrium points
+            \node[circle,fill,inner sep=1.5pt] at (50,45) {};
+            \node[circle,fill,inner sep=1.5pt] at (30,55) {};
+            
+            % Labels for equilibrium
+            % \node[below right] at (50,43) {\small $E_1$};
+            % \node[below right] at (29,54) {\small $E_2$};
+            
+            % Dotted lines for shifts
+            \draw[dashed] (axis cs:5,0) -- (axis cs:5,4.5) -- (axis cs:0,4.5);
+            \draw[dashed] (axis cs:3,0) -- (axis cs:3,5.5) -- (axis cs:0,5.5);
+
+            \node[below] at (50,-1.95) {\small $Y$};
+            \node[below] at (30,0) {\small $\widetilde{Y}$};
+            \node[left] at (-2,45) {\small $\overline{r}$};
+            \node[left] at (-1,55) {\small $R$};
+        \end{axis}
+    \end{tikzpicture}
+    \end{center}
+    
+    In the short run, a sudden drop in the money supply will shift the LM curve
+    to the left, as interest rates will need to adjust to restore equilibrium
+    conditions at all levels of output/income. As this is a short run model,
+    over time the interest rate will return to the natural real interest rate
+    $\overline{r}$ and the output gap will close. This was seen in the previous
+    time series plot as well. 
     
 \end{homeworkProblem}
