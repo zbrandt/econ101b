@@ -115,7 +115,6 @@
     hand side of the price setting equation for a change in the price level 
     $\Delta \log P_t$. I'll then subtract from it a $t-1$ indexed version of the
     equation and assume that $\Delta \log P_t$ is constant in steady state.
-
     \[
         \begin{split}
             \log P_{t+1} - \log P_t &= \theta (\log Y_t - \log Y_t^*)
@@ -136,7 +135,6 @@
     market equilibrium condition and substitute my value for $\Delta \log Y_t$ into
     a difference between $t$ and $t-1$ indexed versions of the equation where $\log M_t$
     and $\log V$ are both equal to zero (the money supply and velocit remain fixed).
-
     \[
         \begin{split}
             \log M_t + \log V &= \log P_t + \log Y_t
@@ -148,13 +146,15 @@
             0 &= \Delta \log P_t + \Delta \log Y_t
             \\
             \Delta \log P_t &= - \Delta \log Y_t
+            \\
+            \Delta \log P_t &= - \Delta \log Y_t^*
         \end{split}
     \]
 
     So the price level is decreasing over time proportionally with the increase in
-    the desired level of output. To find the steady state output gap, I will substitute
-    this $\Delta \log P_t$ into the price setting equation.
-
+    the desired level of output, \fbox{$\Delta \log P_t = -0.02$}. To find the steady 
+    state output gap, I will substitute this $\Delta \log P_t$ into the price setting 
+    equation.
     \[
         \begin{split}
             \log P_{t+1} - \log P_t &= \theta (\log Y_t - \log Y_t^*)
@@ -162,9 +162,16 @@
             \Delta \log P_t &= \theta (\log Y_t - \log Y_t^*)
             \\
             \frac{\Delta \log P_t}{\theta} &= \log Y_t - \log Y_t^*
+            \\
+            - \frac{\Delta \log Y_t^*}{\theta} &= \log Y_t - \log Y_t^*
         \end{split}
     \]
     
+    This shows that the steady state output gap is negative and in proportion to
+    the increase in the desired level of output, \fbox{$\log Y_t - \log Y_t^* = 
+    - \frac{0.02}{\theta}$}. Output takes time to catch up to the ever changing 
+    desired level of output, so the output gap is negative.
+
     \pagebreak
 
     \part
