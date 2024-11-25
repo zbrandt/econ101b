@@ -207,11 +207,11 @@
                                 (axis cs: \pgfkeysvalueof{/pgfplots/xmax}, 0);
             
             \addplot[blue, thick, mark=*] 
-            table[x=T, y=P, col sep=comma] {partc.csv};
+            table[x=T, y=P, col sep=comma] {deflation.csv};
             \addlegendentry{$\log P_t$}
     
             \addplot[red, thick, mark=square*] 
-            table[x=T, y=O, col sep=comma] {partc.csv};
+            table[x=T, y=O, col sep=comma] {deflation.csv};
             \addlegendentry{$\log Y_t$}
         \end{axis}
     \end{tikzpicture}
