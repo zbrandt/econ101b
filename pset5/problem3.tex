@@ -9,7 +9,7 @@
     Consider the following version of our business cycle model:
 
     \begin{flalign*}
-        & \quad \quad \text{LM curve:} \quad \quad \Delta \log M_t - \pi_t = - \phi i_t + \phi i_t-1 + \widetilde{Y}_t - \widetilde{Y}_{t-1} + \Delta \log V_t &\\
+        & \quad \quad \text{LM curve:} \quad \quad \Delta \log M_t - \pi_t = - \phi i_{t} + \phi i_{t-1} + \widetilde{Y}_t - \widetilde{Y}_{t-1} + \Delta \log v_t &\\
         & \quad \quad \text{IS curve:} \quad \quad \widetilde{Y}_t = \overline{a} - \overline{b} (R_t - \overline{r}) &\\
         & \quad \quad \text{Fisher equation:} \quad \quad R_t = i_t - \pi_t &\\
         & \quad \quad \text{Price setting equation:} \quad \quad \pi_t = \theta \widetilde{Y}_{t-1} &\\
@@ -27,7 +27,7 @@
     \\ \\
     B) Suppose that at time 0, the money supply in this economy falls by 0.2 log 
     points (i.e., $\Delta \log M_0 = -0.2$) and remains at that new lower level 
-    going forward (i.e., $\Delta \log M_0 = 0$ for $t > 0$). Plot the evolution
+    going forward (i.e., $\Delta \log M_t = 0$ for $t > 0$). Plot the evolution
     of output, inflation, the nominal interest rate and the real interest rate 
     over time from period 0 to period 20. (You may want to start your figures at 
     period -5 just to have pre-period in the figures to be able to see the response 
@@ -39,5 +39,87 @@
     graphically using the IS-LM diagram.
     
     \pagebreak
+
+    \part
+
+    Suppose that the economy starts off in a steady state with $\Delta \log M_t
+    = 0$, $\Delta \log v_t = 0$. Calculate the steady state value of the output 
+    gap, inflation, the real interest rate, and the nominal interest rates.
+    \\ \\
+    \solution
+
+    To find the steady state value of the output gap, I will first need to find
+    the steady state interest rate. To find the steady state real interest rate, 
+    I will first need to find the steady state inflation and nominal interest rate
+    using the LM curve when there is no change in the money supply or velocity
+    in steady state.
+    \[
+        \begin{split}
+            \Delta \log M_t - \pi_t &= - \phi i_t + \phi i_{t-1} + \widetilde{Y}_t - \widetilde{Y}_{t-1} + \Delta \log v_t
+            \\
+            0 - \pi_t &= - \phi i_t + \phi i_{t-1} + \widetilde{Y}_t - \widetilde{Y}_{t-1} + 0
+            \\
+            - \pi & = 0 + 0
+            \\
+            \pi &= 0
+        \end{split}
+    \]
+
+    So steady state inflation is equal to zero. This makes sense considering the
+    quantity theory of money in a context where there is no steady state change
+    in the money supply. Using the price setting equation, we can find the steady
+    state output gap. 
+    \[
+        \begin{split}
+            \pi_t &= \theta \widetilde{Y}_{t-1}
+            \\
+            \pi &= \theta \widetilde{Y}
+            \\
+            0 &= \theta \widetilde{Y}
+            \\
+            \widetilde{Y} &= 0
+        \end{split}
+    \]
+
+    Substituting this value for the steady state output gap alongstide the given
+    values for $\overline{r}$, $\overline{a}$, and $\overline{b}$ into the IS curve 
+    produces the steady state interest rate.
+    \[
+        \begin{split}
+            \widetilde{Y}_t &= \overline{a} - \overline{b} (R_t - \overline{r})
+            \\
+            \widetilde{Y} &= 0 - (R - 0.02)
+            \\
+            0 &= R - 0.02
+            \\
+            R &= 0.02
+            \\
+            R &= \overline{r}
+        \end{split}
+    \]
+
+    So the steady state interest rate equals 0.02, i.e., it takes on the exact
+    same value as the natural real interest rate. From the Fisher equation, we
+    know then that the steady state nominal interest rate equals the steady state
+    real interest rate since inflation is zero, $i = 0.02 = \overline{r}$. 
+
+    \pagebreak
+
+    \part
+
+    Suppose that at time 0, the money supply in this economy falls by 0.2 log 
+    points (i.e., $\Delta \log M_0 = -0.2$) and remains at that new lower level 
+    going forward (i.e., $\Delta \log M_t = 0$ for $t > 0$). Plot the evolution
+    of output, inflation, the nominal interest rate and the real interest rate 
+    over time from period 0 to period 20. (You may want to start your figures at 
+    period -5 just to have pre-period in the figures to be able to see the response 
+    of the economy better. Also, you may ignore the zero lower bound on nominal 
+    interest rates. If you don’t know what that is, this is OK. We will cover it
+    in a few weeks.)
+    \\ \\
+    \solution
+
+    
+    
     
 \end{homeworkProblem}
