@@ -178,18 +178,44 @@
     \\ \\
     \solution
 
+    \begin{center}
     \begin{tikzpicture}
         \begin{axis}[
+            width=0.9\textwidth, % Make the plot wider
+            height=0.5\textwidth,
+            xmin=-1,
+            xmax=20,
+            axis line style={line width=1pt},
             xlabel={Time $t$},
-            title={Graph Title}
-        ]
-        \addplot table[x=T, y=P, col sep=comma] {partc.csv};
-        \addlegendentry{log price}
-
-        \addplot table[x=T, y=O, col sep=comma] {partc.csv};
-        \addlegendentry{log output}
+            ylabel={},
+            title style={font=\large, align=center},
+            xlabel style={font=\large},
+            legend style={
+                at={(0.5,1.15)}, % Place legend below the plot
+                anchor=north,
+                legend columns=-1, % Arrange legend in a single row
+                font=\small,
+                draw=black % Add a border to the legend
+            },
+            grid=both, % Add gridlines
+            minor grid style={dashed, gray!30}, % Style for minor gridlines
+            major grid style={solid, gray!60}, % Style for major gridlines
+            ]
+            \draw[thick, black] (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymin}) -- 
+                                (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymax});
+            \draw[thick, black] (axis cs: \pgfkeysvalueof{/pgfplots/xmin}, 0) -- 
+                                (axis cs: \pgfkeysvalueof{/pgfplots/xmax}, 0);
+            
+            \addplot[blue, thick, mark=*] 
+            table[x=T, y=P, col sep=comma] {partc.csv};
+            \addlegendentry{$\log P_t$}
+    
+            \addplot[red, thick, mark=square*] 
+            table[x=T, y=O, col sep=comma] {partc.csv};
+            \addlegendentry{$\log Y_t$}
         \end{axis}
     \end{tikzpicture}
+    \end{center}
     
     
 \end{homeworkProblem}
