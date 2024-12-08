@@ -21,7 +21,7 @@
     The consolidated government budget constraint is then given by
     \[
         \begin{split}
-            G_t + (1 + R_{t-1}) B_t &= T_t + B_t + \frac{M_t - M_{t-1}}{P_t}
+            G_t + (1 + R_{t-1}) B_{t-1} &= T_t + B_t + \frac{M_t - M_{t-1}}{P_t}
         \end{split}
     \]
     The way to interpret this equation is that the terms on the left hand side are
@@ -67,7 +67,7 @@
     D) Suppose the central bank is compeletely independent and that its commitment to no
     inflation is sufficiently strong that Congress cannot force the central bank to abandon
     its policy. Describe the adjustment Congress is forced to make in this case once the
-    constraint binds. In particular, calculate the primary suprlus, $T_t - G_t$, that 
+    constraint binds. In particular, calculate the primary surplus, $T_t - G_t$, that 
     Congress will need to set in the period that the constraint binds and in subsequent
     periods (up to period 30). 
     \\ \\
@@ -79,5 +79,217 @@
     in subsequent years up to year 30. 
     
     \pagebreak
+    \part
+    
+    Suppose the central bank is determined not to allow any inflation. How 
+    should it set the money supply to achieve this?
+    \\ \\
+    \solution
+
+    Since prices are perfectly flexible in this problem, to ensure that there
+    is no inflation, the central bank should not change the money supply over
+    time, i.e., \fbox{$M_{t+1} = M_{t}$}. Since $M_t = P_t$, this implies that
+    prices won't change over time either, $P_{t+1} = P_t$, and hence no inflation.
+
+    \pagebreak
+    \part 
+
+    Suppose that dysfunctional politics in this country implies that Congress 
+    refuses to collect enough taxes to pay for the amount of spending it decides 
+    to do. (Alternatively, one could say that it decides to spend more than the 
+    amount of taxes it decides to collect. Specifically, suppose $G_t = 0.25$, 
+    while $T_t= 0.15$. Given the monetary policy from part A), use the government 
+    budget constraint to calculate how government debt evolves over the next 30 
+    years. 
+    \\ \\
+    \solution
+
+    If the money supply does not change across time, the government budget constraint
+    becomes the following
+    \[
+        \begin{split}
+            G_t + (1 + R_{t-1}) B_{t-1} &= T_t + B_t + \frac{M_t - M_{t-1}}{P_t}
+            \\
+            G_t + (1 + R_{t-1}) B_{t-1} &= T_t + B_t + \frac{0}{P_t}
+            \\
+            G_t + (1 + R_{t-1}) B_{t-1} - T_t &= B_t
+        \end{split}
+    \]
+    So the government debt evolves according to $B_t = G_t + (1 + R_{t-1}) B_{t-1} - T_t$
+    over the next 30 years, which is plotted below starting at $t=-1$ where $G_t = 0.25$,
+    $R_t = 0.05$, and $T_t = 0.15$
+
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.9\textwidth, % Make the plot wider
+            height=0.5\textwidth,
+            xmin=-1,
+            xmax=30,
+            axis line style={line width=1pt},
+            xlabel={Time $t$},
+            ylabel={},
+            title style={font=\large, align=center},
+            xlabel style={font=\large},
+            legend style={
+                at={(0.5,1.15)}, % Place legend below the plot
+                anchor=north,
+                legend columns=-1, % Arrange legend in a single row
+                font=\small,
+                draw=black % Add a border to the legend
+            },
+            grid=both, % Add gridlines
+            minor grid style={dashed, gray!30}, % Style for minor gridlines
+            major grid style={solid, gray!60}, % Style for major gridlines
+            ]
+            \draw[thick, black] (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymin}) -- 
+                                (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymax});
+            \draw[thick, black] (axis cs: \pgfkeysvalueof{/pgfplots/xmin}, 0) -- 
+                                (axis cs: \pgfkeysvalueof{/pgfplots/xmax}, 0);
+            
+            \addplot[blue, thick, mark=*] 
+            table[x=t, y=B, col sep=comma] {debt.csv};
+            \addlegendentry{$B_t$}
+
+            % \addplot[red, thick, dashed, domain=-1:30] {1};
+            % \addlegendentry{Horizontal line $y = 1$}
+        \end{axis}
+    \end{tikzpicture}
+    \end{center}
+
+    \pagebreak
+    \part
+
+    Now suppose that the bond market in this country puts an upper limit on the 
+    amount that it is willing to lend to the government. Suppose this upper limit
+    is equal to 1 --- i.e., 100\% of GDP. This means that government debt is 
+    constrained to be less than or equal to 1, i.e., $B_t \leq 1$. In which year 
+    will this constraint bind?
+    \\ \\
+    \solution
+
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.9\textwidth, % Make the plot wider
+            height=0.5\textwidth,
+            xmin=4,
+            xmax=9,
+            axis line style={line width=1pt},
+            xlabel={Time $t$},
+            ylabel={},
+            title style={font=\large, align=center},
+            xlabel style={font=\large},
+            legend style={
+                at={(0.5,1.15)}, % Place legend below the plot
+                anchor=north,
+                legend columns=-1, % Arrange legend in a single row
+                font=\small,
+                draw=black % Add a border to the legend
+            },
+            grid=both, % Add gridlines
+            minor grid style={dashed, gray!30}, % Style for minor gridlines
+            major grid style={solid, gray!60}, % Style for major gridlines
+            ]
+            \draw[thick, black] (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymin}) -- 
+                                (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymax});
+            \draw[thick, black] (axis cs: \pgfkeysvalueof{/pgfplots/xmin}, 0) -- 
+                                (axis cs: \pgfkeysvalueof{/pgfplots/xmax}, 0);
+            
+            \addplot[blue, thick, mark=*] 
+            table[x=t, y=B, col sep=comma] {debt.csv};
+            \addlegendentry{$B_t$}
+
+            \addplot[red, thick, dashed, domain=-1:30] {1};
+            \addlegendentry{$B_t =1 $}
+        \end{axis}
+    \end{tikzpicture}
+    \end{center}
+
+    I've replotted above an enhanced version of the graph from the last part
+    with a horizontal line at the $B_t=1$ level, denoting  the upper limit for 
+    the bond market. From the plot, it appears the upper limit is crossed after
+    \fbox{year 7} going into year 8.
+
+    \pagebreak
+    \part
+
+    Suppose the central bank is compeletely independent and that its commitment to 
+    no inflation is sufficiently strong that Congress cannot force the central bank
+    to abandon its policy. Describe the adjustment Congress is forced to make in this
+    case once the constraint binds. In particular, calculate the primary surplus, 
+    $T_t - G_t$, that Congress will need to set in the period that the constraint 
+    binds and in subsequent periods (up to period 30). 
+    \\ \\
+    \solution
+
+    If Congress cannot force the central bank to abandon its policy, the government
+    will have to run a surplus such that $B_{t} = B_{t-1}$. I'll solve for the value
+    of $T_t - G_t$ that satisfies this constraint
+    \[
+        \begin{split}
+            G_t + (1 + R_{t-1}) B_{t-1} - T_t &= B_t
+            \\
+            G_t - T_t &= B_t - (1 + R_{t-1}) B_{t-1}
+            \\
+            G_t - T_t &= B_t - (1 + R_{t-1}) B_{t}
+            \\
+            G_t - T_t &= B_t (1 - (1 + R_{t-1})) 
+            \\
+            G_t - T_t &= -B_t R_{t-1}
+            \\
+            T_t - G_t &= B_t R_{t-1}
+        \end{split}
+    \]
+
+    The primary surplus required going forward is the product of the debt and the
+    interest rate for each period, \fbox{$T_t - G_t = B_t R_{t-1}$}. 
+
+    \pagebreak
+    \part
+
+    Suppose instead the Congress can push the central bank around and get it to 
+    change its monetary policy once the constraint binds. What will inflation be 
+    after the government's budget hits the constraint under the assumption that 
+    Congress doesn't change the primary surplus but rather forces the central 
+    bank to ``monetize'' its deficit spending after that  point? More specifically, 
+    calculate the inflation rate in the year the constraint binds and in subsequent
+    years up to year 30. 
+    \\ \\
+    \solution
+
+    If the central bank is forced to monitize the debt, that means that the money
+    supply needs to change in a way so that $(M_t - M_{t-1})/P_t$ balances the
+    government budget constraint so that $B_t = B_{t-1}$. Since prices are perfectly
+    flexible in this problem, $M_t = P_t$, we can rewrite this real money supply
+    change as inflation since $\pi_t = (P_t - P_{t-1})/P_t$
+
+    \[
+        \begin{split}
+            G_t + (1 + R_{t-1}) B_{t-1} &= T_t + B_t + \frac{M_t - M_{t-1}}{P_t}
+            \\
+            G_t + (1 + R_{t-1}) B_{t} &= T_t + B_t + \frac{P_t - P_{t-1}}{P_t}
+            \\
+            G_t + (1 + R_{t-1}) B_{t} - B_t - T_t &= \pi_t
+            \\
+            G_t + B_t ((1 + R_{t-1}) - 1)  - T_t &= \pi_t
+            \\
+            G_t + B_t R_{t-1} - T_t &= \pi_t
+        \end{split}
+    \]
+
+    Now substituing in values for $G_t$, $R_t$, and $T_t$
+
+    \[
+        \begin{split}
+            G_t + B_t R_{t-1} - T_t &= \pi_t
+            \\
+            0.25 + 0.05B_t - 0.15 &= \pi_t
+            \\
+            0.10 + 0.05B_t &= \pi_t
+        \end{split}
+    \]
+
+    So inflation will equal \fbox{$\pi_t = 0.10 + 0.05B_t$}.
     
 \end{homeworkProblem}
