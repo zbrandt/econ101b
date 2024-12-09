@@ -14,38 +14,308 @@
     A) Combine the monetary policy rule and the IS curve to derive an ``aggregate
     demand'' equation for this model.
     \\ \\
-    B) This leaves two equations and two unknown endogenous variables (output gap and
-    inflation). Solve these two equations, i.e., use these two equations to express the
-    endogenous variables as functions of only past endogenous variables, exogenous variables,
-    and parameters. 
+    B) This leaves two equations and two unknown endogenous variables (output gap 
+    and inflation). Solve these two equations, i.e., use these two equations to 
+    express the endogenous variables as functions of only past endogenous variables, 
+    exogenous variables, and parameters. 
     \\ \\
-    C) Use the result from part B) and the original monetary policy rule to express the real
-    interest rate as a function of only past endogenous variables, exogenous variables, and
-    parameters. 
+    C) Use the result from part B) and the original monetary policy rule to express
+    the real interest rate as a function of only past endogenous variables, exogenous
+    variables, and parameters. 
     \\ \\
-    Suppose $\overline{r} = 3\%$, $\overline{\pi} = 2\%$, $\overline{b}=1/3$, $\overline{m} =
-    1$, $\overline{v}=1$. Suppose furthermore that $\pi_{-1} = 2\%$. Suppose $\overline{a}_t$
-    and $\overline{o}_t$ are zero at all times unless otherwise noted. 
+    Suppose $\overline{r} = 3\%$, $\overline{\pi} = 2\%$, $\overline{b}=1/3$, 
+    $\overline{m} = 1$, $\overline{v}=1$. Suppose furthermore that $\pi_{-1} = 2\%$.
+    Suppose $\overline{a}_t$ and $\overline{o}_t$ are zero at all times unless otherwise
+    noted. 
     \\ \\
-    D) Calculate the values of inflation, the output gap, and real interest rate in period 0.
+    D) Calculate the values of inflation, the output gap, and real interest rate in
+    period 0.
     \\ \\
-    E) Now suppose the economy is hit by a positive aggregate demand shock that lasts for 3 
-    periods. More specifically, suppose $\overline{a}_1 = \overline{a}_2 = \overline{a}_3 = 2\%$.
-    After period 3, the aggregate demand shock returns to 0. Using the three equation model,
-    calculate the evolution of inflation, the output gap, and the real interest rate form period
-    1 to period 10. Plot the resulting time series for these three variables. You may find it useful
-    to do this in Excel.
+    E) Now suppose the economy is hit by a positive aggregate demand shock that lasts
+    for 3 periods. More specifically, suppose $\overline{a}_1 = \overline{a}_2 = 
+    \overline{a}_3 = 2\%$. After period 3, the aggregate demand shock returns to 0. 
+    Using the three equation model, calculate the evolution of inflation, the output gap,
+    and the real interest rate form period 1 to period 10. Plot the resulting time series
+    for these three variables. You may find it useful to do this in Excel.
     \\ \\
-    F) Starting form the point calculated for period 0 in part D), suppose the economy is instead
-    hit by a positive aggregate supply shock that lasts for 3 periods. More specifically, suppose
-    $\overline{o}_1 = \overline{o}_2 = \overline{o}_3 = 2\%$. After period 3, the aggregate supply
-    shock returns to 0. Using the three equation model, calculate the evolution of inflation, the
-    output gap, and the real interest rate from period 1 to period 10. Plot the time series for 
-    these three variables. 
+    F) Starting form the point calculated for period 0 in part D), suppose the economy is 
+    instead hit by a positive aggregate supply shock that lasts for 3 periods. More 
+    specifically, suppose $\overline{o}_1 = \overline{o}_2 = \overline{o}_3 = 2\%$. After
+    period 3, the aggregate supply shock returns to 0. Using the three equation model, 
+    calculate the evolution of inflation, the output gap, and the real interest rate from
+    period 1 to period 10. Plot the time series for these three variables. 
     \\ \\
-    G) Comment on the difference between the response of the economy to an aggregate demand schock
-    and an aggregate supply shock.
+    G) Comment on the difference between the response of the economy to an aggregate demand 
+    schock and an aggregate supply shock.
     
     \pagebreak
+    \part 
+
+    Combine the monetary policy rule and the IS curve to derive an ``aggregate demand'' 
+    equation for this model.
+    \\ \\
+    \solution 
+
+    To find the aggregate demand equation for this model I will substitute in the monetary
+    policy rule equation for $R_t$ in the IS curve equation to obtain an equation for
+    the output gap in terms of inflation
+    \[
+        \begin{split}
+                \widetilde{Y}_t &= \overline{a}_t - \overline{b} (R_t - \overline{r})
+                \\
+                \widetilde{Y}_t &= \overline{a}_t - \overline{b} (\overline{m} (\pi_t - \overline{\pi}) + \overline{r} - \overline{r})
+                \\
+                \widetilde{Y}_t &= \overline{a}_t - \overline{b} \overline{m} (\pi_t - \overline{\pi})
+        \end{split}
+    \]
+
+    This curve describes the aggregate demand mechanism. When inflation increases, the
+    central bank raises real rates according to the monetary policy rule, resulting in 
+    a decline in consumption and investment, thereby decreasing output, and the output
+    gap. 
+
+    \pagebreak
+    \part
+
+    This leaves two equations and two unknown endogenous variables (output gap 
+    and inflation). Solve these two equations, i.e., use these two equations to 
+    express the endogenous variables as functions of only past endogenous variables, 
+    exogenous variables, and parameters. 
+    \\ \\
+    \solution
+
+    To solve for the endogenous variable of inflation, I will substitute in the equation
+    I derived for the aggregate demand into the Phillips curve equation.
+    \[
+        \begin{split}
+            \pi_t &= \pi_{t-1} + \overline{v} \widetilde{Y}_t + \overline{o}_t
+            \\
+            \pi_t &= \pi_{t-1} + \overline{v} (\overline{a}_t - \overline{b} \overline{m} (\pi_t - \overline{\pi})) + \overline{o}_t
+            \\
+            \pi_t &= \pi_{t-1} + \overline{v} \overline{a}_t - \overline{v} \overline{b} \overline{m} \pi_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t
+            \\
+            \pi_t + \overline{v} \overline{b} \overline{m} \pi_t &= \pi_{t-1} + \overline{v} \overline{a}_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t
+            \\
+            \pi_t (1 + \overline{v} \overline{b} \overline{m}) &= \pi_{t-1} + \overline{v} \overline{a}_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t
+            \\
+            \pi_t &= \frac{\pi_{t-1} + \overline{v} \overline{a}_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t}{1 + \overline{v} \overline{b} \overline{m}}
+        \end{split}
+    \]
+
+    Now to solve for the output gap I can substitute in this equation for the inflation
+    into the aggregate demand equation I found earlier
+    \[
+        \begin{split}
+            \widetilde{Y}_t &= \overline{a}_t - \overline{b} \overline{m} (\pi_t - \overline{\pi})
+            \\
+            \widetilde{Y}_t &= \overline{a}_t - \overline{b} \overline{m} (\frac{\pi_{t-1} + \overline{v} \overline{a}_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t}{1 + \overline{v} \overline{b} \overline{m}} - \overline{\pi})
+        \end{split}
+    \]
+
+    \pagebreak
+    \part 
+
+    Use the result from part B) and the original monetary policy rule to express
+    the real interest rate as a function of only past endogenous variables, exogenous
+    variables, and parameters. 
+    \\ \\
+    \solution
+
+    To solve for the real interest rate as a function of only past endogenous variables,
+    exogenous variables, and parameters, I will again substitute in the equation I found
+    for inflation but this time into the monetary policy rule equation
+    \[
+        \begin{split}
+            R_t - \overline{r} &= \overline{m} (\pi_t - \overline{\pi})
+            \\
+            R_t - \overline{r} &= \overline{m} (\frac{\pi_{t-1} + \overline{v} \overline{a}_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t}{1 + \overline{v} \overline{b} \overline{m}} - \overline{\pi})
+            \\
+            R_t &= \overline{r} + \overline{m} (\frac{\pi_{t-1} + \overline{v} \overline{a}_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t}{1 + \overline{v} \overline{b} \overline{m}} - \overline{\pi})
+        \end{split}
+    \]
+
+    \pagebreak
+    \part 
+
+    Suppose $\overline{r} = 3\%$, $\overline{\pi} = 2\%$, $\overline{b}=1/3$, 
+    $\overline{m} = 1$, $\overline{v}=1$. Suppose furthermore that $\pi_{-1} = 2\%$.
+    Suppose $\overline{a}_t$ and $\overline{o}_t$ are zero at all times unless otherwise
+    noted. 
+    \\ \\
+    Calculate the values of inflation, the output gap, and real interest rate in
+    period 0.
+    \\ \\
+    \solution 
+
+    First to solve for inflation at time $t=0$, I will substitute in the given values into 
+    the equation I found for inflation in part B)
+    \[
+        \begin{split}
+            \pi_t &= \frac{\pi_{t-1} + \overline{v} \overline{a}_t + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_t}{1 + \overline{v} \overline{b} \overline{m}}
+            \\
+            \pi_0 &= \frac{\pi_{-1} + \overline{v} \overline{a}_0 + \overline{v} \overline{b} \overline{m} \overline{\pi} + \overline{o}_0}{1 + \overline{v} \overline{b} \overline{m}}
+            \\
+            \pi_0 &= \frac{2\% + 1 \cdot 0 + 1 \cdot \frac{1}{3} \cdot 1 \cdot 2\% + 0}{1 + 1 \cdot \frac{1}{3} \cdot 1}
+            \\
+            \pi_0 &= (2\% + \frac{2}{3} \%) \cdot \frac{3}{4}
+            \\
+            \pi_0 &= \frac{3}{2}\% + \frac{1}{2}\% = 2 \%
+        \end{split}
+    \]
+    So inflation in period zero equals \fbox{$\pi_0 = 2\%$}. To find the output gap, I will
+    now substitute in this value for $\pi_0$ into the aggregate demand equation
+    \[
+        \begin{split}
+            \widetilde{Y}_t &= \overline{a}_t - \overline{b} \overline{m} (\pi_t - \overline{\pi})
+            \\
+            \widetilde{Y}_0 &= \overline{a}_0 - \overline{b} \overline{m} (\pi_0 - \overline{\pi})
+            \\
+            \widetilde{Y}_0 &= 0 - 1/3 \cdot 1 \cdot (2 \% - 2 \%)
+            \\
+            \widetilde{Y}_0 &= 0 \%            
+        \end{split}
+    \]
+
+    So output is at potential at time period 0, i.e., \fbox{$\widetilde{Y}_0 = 0 \%$}. To find 
+    the real interest rate at time period 0, I will again substitue in the value I found for 
+    $\pi_0$ but now into the equation for the monetary policy rule
+    \[
+        \begin{split}
+            R_t - \overline{r} &= \overline{m} (\pi_t - \overline{\pi})
+            \\
+            R_0 &= \overline{r} + \overline{m} (\pi_0 - \overline{\pi})
+            \\
+            R_0 &= 3 \% + 1 \cdot (2 \% - 2 \%)
+            \\
+            R_0 &= 3 \%
+        \end{split}
+    \]
+
+    So the real interest rate in period 0 equals the natural rate \fbox{$R_0 = 3 \%$}.
+
+    \pagebreak
+    \part
+
+    Now suppose the economy is hit by a positive aggregate demand shock that lasts
+    for 3 periods. More specifically, suppose $\overline{a}_1 = \overline{a}_2 = 
+    \overline{a}_3 = 2\%$. After period 3, the aggregate demand shock returns to 0. 
+    Using the three equation model, calculate the evolution of inflation, the output gap,
+    and the real interest rate form period 1 to period 10. Plot the resulting time series
+    for these three variables.
+    \\ \\
+    \solution 
+    
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.9\textwidth, % Make the plot wider
+            height=0.5\textwidth,
+            xmin=0,
+            xmax=10,
+            axis line style={line width=1pt},
+            xlabel={Time $t$},
+            ylabel={},
+            title style={font=\large, align=center},
+            xlabel style={font=\large},
+            legend style={
+                at={(0.5,1.15)}, % Place legend below the plot
+                anchor=north,
+                legend columns=-1, % Arrange legend in a single row
+                font=\small,
+                draw=black % Add a border to the legend
+            },
+            grid=both, % Add gridlines
+            minor grid style={dashed, gray!30}, % Style for minor gridlines
+            major grid style={solid, gray!60}, % Style for major gridlines
+            ]
+            \draw[thick, black] (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymin}) -- 
+                                (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymax});
+            \draw[thick, black] (axis cs: \pgfkeysvalueof{/pgfplots/xmin}, 0) -- 
+                                (axis cs: \pgfkeysvalueof{/pgfplots/xmax}, 0);
+            
+            \addplot[blue, thick, mark=*] 
+            table[x=t, y=pi, col sep=comma] {demand.csv};
+            \addlegendentry{$\pi_t$}
+
+            \addplot[red, thick, mark=*] 
+            table[x=t, y=Y, col sep=comma] {demand.csv};
+            \addlegendentry{$\widetilde{Y}_t$}
+            
+            \addplot[brown, thick, mark=*] 
+            table[x=t, y=R, col sep=comma] {demand.csv};
+            \addlegendentry{$R_t$}
+
+        \end{axis}
+    \end{tikzpicture}
+    \end{center}
+
+    \pagebreak
+    \part 
+
+    Starting form the point calculated for period 0 in part D), suppose the economy is 
+    instead hit by a positive aggregate supply shock that lasts for 3 periods. More 
+    specifically, suppose $\overline{o}_1 = \overline{o}_2 = \overline{o}_3 = 2\%$. After
+    period 3, the aggregate supply shock returns to 0. Using the three equation model, 
+    calculate the evolution of inflation, the output gap, and the real interest rate from
+    period 1 to period 10. Plot the time series for these three variables. 
+    \\ \\
+    \solution 
+
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.9\textwidth, % Make the plot wider
+            height=0.5\textwidth,
+            xmin=0,
+            xmax=10,
+            axis line style={line width=1pt},
+            xlabel={Time $t$},
+            ylabel={},
+            title style={font=\large, align=center},
+            xlabel style={font=\large},
+            legend style={
+                at={(0.5,1.15)}, % Place legend below the plot
+                anchor=north,
+                legend columns=-1, % Arrange legend in a single row
+                font=\small,
+                draw=black % Add a border to the legend
+            },
+            grid=both, % Add gridlines
+            minor grid style={dashed, gray!30}, % Style for minor gridlines
+            major grid style={solid, gray!60}, % Style for major gridlines
+            ]
+            \draw[thick, black] (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymin}) -- 
+                                (axis cs: 0, \pgfkeysvalueof{/pgfplots/ymax});
+            \draw[thick, black] (axis cs: \pgfkeysvalueof{/pgfplots/xmin}, 0) -- 
+                                (axis cs: \pgfkeysvalueof{/pgfplots/xmax}, 0);
+            
+            \addplot[blue, thick, mark=*] 
+            table[x=t, y=pi, col sep=comma] {cost.csv};
+            \addlegendentry{$\pi_t$}
+
+            \addplot[red, thick, mark=*] 
+            table[x=t, y=Y, col sep=comma] {cost.csv};
+            \addlegendentry{$\widetilde{Y}_t$}
+            
+            \addplot[brown, thick, mark=*] 
+            table[x=t, y=R, col sep=comma] {cost.csv};
+            \addlegendentry{$R_t$}
+
+        \end{axis}
+    \end{tikzpicture}
+    \end{center}
+
+    \pagebreak
+    \part 
+
+    Comment on the difference between the response of the economy to an aggregate demand 
+    schock and an aggregate supply shock.
+    \\ \\
+    \solution 
+
+    The response is the exact same. Both drive up inflation at the same rate, and the response
+    from the monetary authority is to raise real rates, thereby decreasing inflation but also
+    depressing output below potential for a time. After the shock, inflation, the output gap,
+    and the real interest rate gradually approach their steady state values.
     
 \end{homeworkProblem}
